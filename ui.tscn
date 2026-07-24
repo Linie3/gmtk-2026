@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://crndvdes2y8d7"]
 
-[node name="ui" type="Control" unique_id=953487115]
+[ext_resource type="Script" uid="uid://caswrd3wu1hc" path="res://ui.gd" id="1_fyqef"]
+
+[node name="ui" type="Control" unique_id=953487115 node_paths=PackedStringArray("timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fyqef")
+timer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=268380869]
 layout_mode = 1
