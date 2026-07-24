@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bcxdl7vmhwro4"]
+
+[ext_resource type="PackedScene" uid="uid://cr3l7x8g53tq4" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://beobasoccyje2" path="res://world.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://crndvdes2y8d7" path="res://ui.tscn" id="3_feb5d"]
+
+[node name="game" type="Node" unique_id=939668133]
+
+[node name="world" type="Node2D" parent="." unique_id=1493077604]
+script = ExtResource("1_e2o6t")
+
+[node name="Camera2D" type="Camera2D" parent="world" unique_id=870487946]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Player" parent="world" unique_id=129920706 instance=ExtResource("1_80nbo")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="world/Player" unique_id=851298692]
+remote_path = NodePath("../../Camera2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1242183061]
+
+[node name="ui" parent="CanvasLayer" unique_id=953487115 instance=ExtResource("3_feb5d")]
