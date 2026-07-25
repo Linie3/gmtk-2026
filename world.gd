@@ -16,6 +16,7 @@ var objects_container: Node2D
 @export
 var player: Player
 var last_player_position: Vector2 = Vector2.ZERO
+var navigation_update_scheduled: bool = false
 
 func _init() -> void:
 	instance = self
@@ -29,9 +30,11 @@ func _ready() -> void:
 		var new_rock : Node2D = rock.instantiate()
 		new_rock.position = position
 		_add_object(new_rock)
-	navigation_region.bake_navigation_polygon()
 
 func _process(delta: float) -> void:
+	if navigation_update_scheduled:
+		navigation_region.bake_navigation_polygon()
+		navigation_update_scheduled = false
 	if last_player_position.distance_to(player.position) > 50:
 		player_position_changed.emit(player.position)
 		last_player_position = player.position
@@ -52,3 +55,6 @@ func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 
 func _add_object(object: Node2D) -> void:
 	objects_container.add_child(object)
+
+func schedule_navigation_update() -> void:
+	navigation_update_scheduled = true
