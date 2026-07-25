@@ -2,12 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://jm8ecrxintwb" path="res://Sprite-0001.png" id="1_brfkd"]
 [ext_resource type="Script" uid="uid://boat8s30cgc0n" path="res://tree.gd" id="1_d2g23"]
-[ext_resource type="PackedScene" uid="uid://cepk0eqrxsygj" path="res://interaction_component.tscn" id="2_nnvrw"]
 [ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="3_gvmkm"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73o7e"]
-radius = 33.0
-height = 260.0
+[ext_resource type="PackedScene" uid="uid://bljcf7p8p5rn7" path="res://game_collision.tscn" id="4_d2g23"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wguj5"]
 radius = 35.0
@@ -21,17 +17,6 @@ harvestable = NodePath("harvestable")
 scale = Vector2(2, 2)
 texture = ExtResource("1_brfkd")
 
-[node name="interaction_component" parent="." unique_id=1904319827 instance=ExtResource("2_nnvrw")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_component/Area2D" parent_id_path=PackedInt32Array(1904319827, 1130462367) index="0" unique_id=1361048471]
-shape = SubResource("CapsuleShape2D_73o7e")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=970753389]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=694554390 groups=["navigation_polygon_source_geometry_group"]]
-position = Vector2(0, 89)
-shape = SubResource("CapsuleShape2D_wguj5")
-
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("3_gvmkm")]
 harvesting_health = 3
 
@@ -43,5 +28,10 @@ monitoring = true
 position = Vector2(0, 89)
 shape = SubResource("CapsuleShape2D_wguj5")
 
-[editable path="interaction_component"]
+[node name="game_collision" parent="." unique_id=1007742035 instance=ExtResource("4_d2g23")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_collision" unique_id=694554390 groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(0, 89)
+shape = SubResource("CapsuleShape2D_wguj5")
+
 [editable path="harvestable"]

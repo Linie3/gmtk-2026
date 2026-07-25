@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://btgy0rnxvfht4"]
+
+[ext_resource type="Script" uid="uid://lwiaturtpvnb" path="res://time_machine.gd" id="1_1mt3p"]
+[ext_resource type="Texture2D" uid="uid://df32tmkquuxia" path="res://time-machine.png" id="1_bls47"]
+[ext_resource type="PackedScene" uid="uid://cepk0eqrxsygj" path="res://interactable.tscn" id="2_yvgc5"]
+[ext_resource type="PackedScene" uid="uid://bljcf7p8p5rn7" path="res://game_collision.tscn" id="3_yvgc5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvgc5"]
+radius = 73.0
+height = 178.0
+
+[node name="time_machine" type="Node2D" unique_id=1447871889 node_paths=PackedStringArray("popup", "interactable")]
+script = ExtResource("1_1mt3p")
+popup = NodePath("Button")
+interactable = NodePath("interactable")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=283012120]
+scale = Vector2(3.275, 3.275)
+texture = ExtResource("1_bls47")
+
+[node name="interactable" parent="." unique_id=1904319827 instance=ExtResource("2_yvgc5")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interactable/Area2D" parent_id_path=PackedInt32Array(1904319827, 1130462367) index="0" unique_id=1205196604]
+shape = SubResource("CapsuleShape2D_yvgc5")
+
+[node name="game_collision" parent="." unique_id=1007742035 instance=ExtResource("3_yvgc5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_collision" unique_id=1953898528]
+shape = SubResource("CapsuleShape2D_yvgc5")
+
+[node name="Button" type="Button" parent="." unique_id=1799762193]
+offset_left = -25.0
+offset_top = -153.0
+offset_right = 27.0
+offset_bottom = -98.0
+theme_override_font_sizes/font_size = 34
+text = "E"
+
+[editable path="interactable"]

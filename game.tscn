@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://beobasoccyje2" path="res://world.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c6y2jwkyny2k6" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://crndvdes2y8d7" path="res://ui.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_7jktm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7jktm"]
 vertices = PackedVector2Array(1009.40625, 652.0703, -1092.3906, 667.90625, -1013.5625, -683.15625, 930.5703, -717.8203)
@@ -30,8 +31,7 @@ remote_path = NodePath("../../Camera2D")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="world" unique_id=2028339851]
 navigation_polygon = SubResource("NavigationPolygon_7jktm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1242183061]
+[node name="time_machine" parent="world" unique_id=1447871889 instance=ExtResource("4_7jktm")]
 
-[node name="ui" parent="CanvasLayer" unique_id=953487115 node_paths=PackedStringArray("game") instance=ExtResource("3_feb5d")]
-visible = false
-game = NodePath("../..")
+[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game") instance=ExtResource("3_feb5d")]
+game = NodePath("..")

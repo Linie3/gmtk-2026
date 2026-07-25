@@ -4,9 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cx1opinmxosre" path="res://items.gd" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://cqgda1a7kxypl" path="res://paxe.tscn" id="4_hqtel"]
+[ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
 radius = 67.06713
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
+radius = 119.0042
 
 [node name="Player" type="CharacterBody2D" unique_id=709357860 node_paths=PackedStringArray("items")]
 script = ExtResource("1_4flbx")
@@ -32,3 +36,11 @@ one_shot = true
 [node name="items" type="Node2D" parent="item_inventory" unique_id=1131518324]
 
 [node name="paxe" parent="item_inventory/items" unique_id=602674080 instance=ExtResource("4_hqtel")]
+
+[node name="interacter" type="Area2D" parent="." unique_id=551174352]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("5_sweqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacter" unique_id=908140582]
+shape = SubResource("CircleShape2D_hqtel")
