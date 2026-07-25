@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://beobasoccyje2" path="res://world.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c6y2jwkyny2k6" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://crndvdes2y8d7" path="res://ui.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_7jktm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7jktm"]
@@ -19,6 +20,14 @@ script = ExtResource("1_fc0e3")
 [node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region")]
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
+
+[node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
+repeat_size = Vector2(64, 64)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="world/Parallax2D" unique_id=237657309]
+position = Vector2(64, 64)
+texture = ExtResource("3_ryrav")
 
 [node name="Camera2D" type="Camera2D" parent="world" unique_id=870487946]
 zoom = Vector2(0.75, 0.75)
