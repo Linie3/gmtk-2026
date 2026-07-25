@@ -6,6 +6,8 @@ class_name ItemInventory
 var item_cooldown: Timer
 @export
 var items_container: Node2D
+@export
+var resource_inventory: ResourceInventory
 var active_item: Item
 var active_item_cooldown_finished: bool = true
 var items: Array[Item] = []
@@ -27,6 +29,23 @@ func add_item(item: Item) -> void:
 	items.append(item)
 	if (!active_item):
 		_set_active_item(item)
+	item.harvest.connect(_on_item_harvest)
+
+func remove_item(item: Item) -> void:
+	item.harvest.disconnect(_on_item_harvest)
+	if (active_item == item):
+		# Todo Handle next active item
+		_set_active_item(null)
+	items.erase(item)
+
+func use_active_item(direction: Vector2) -> void:
+	if (active_item && active_item_cooldown_finished && resource_inventory.has_enough_resources(active_item.usage_cost)):
+		resource_inventory.remove_resources(active_item.usage_cost)
+		start_item_cooldown()
+		active_item.use(direction)
 
 func _set_active_item(item: Item) -> void:
 	active_item = item
+
+func _on_item_harvest(harvestation_result: Dictionary[GameResource.ResourceType, int]) -> void:
+	resource_inventory.add_resources(harvestation_result)

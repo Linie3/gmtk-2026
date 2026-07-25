@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cqgda1a7kxypl"]
+
+[ext_resource type="Script" uid="uid://c00i671c4umsr" path="res://paxe.gd" id="1_0b7hu"]
+[ext_resource type="Texture2D" uid="uid://bbrdfmmj5x1ee" path="res://paxe.png" id="2_7di7i"]
+[ext_resource type="PackedScene" uid="uid://ba5up4ur3wijb" path="res://harvester.tscn" id="3_7di7i"]
+
+[node name="paxe" type="Node2D" unique_id=602674080 node_paths=PackedStringArray("sprite", "harvester")]
+script = ExtResource("1_0b7hu")
+sprite = NodePath("Sprite2D")
+harvester = NodePath("harvester")
+cooldown = 0.5
+usage_cost = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=863903901]
+position = Vector2(64, -64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_7di7i")
+
+[node name="harvester" parent="." unique_id=1003190747 instance=ExtResource("3_7di7i")]
+
+[node name="harvest_area" parent="harvester" index="0" unique_id=1453486384]
+collision_layer = 2
+monitorable = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="harvester/harvest_area" index="0" unique_id=1111847637]
+position = Vector2(64, -64)
+polygon = PackedVector2Array(-59, 62, -30, -48, 38, -41, 60, 15)
+
+[editable path="harvester"]

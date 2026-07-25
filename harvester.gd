@@ -15,9 +15,11 @@ func _ready() -> void:
 
 func start_harvesting() -> void:
 	harvested_harvestables.clear()
+	harvestable_area.monitoring = true
 	harvesting_enabled = true
 
 func finish_harvesting() -> void:
+	harvestable_area.monitoring = false
 	harvesting_enabled = false
 
 func _on_area_entered(area: Area2D) -> void:
