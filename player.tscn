@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
 [ext_resource type="Script" uid="uid://cwffo07llm8wp" path="res://resource_inventory.gd" id="6_2hs0m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
-radius = 67.06713
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(126, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 119.0042
@@ -23,9 +23,7 @@ resource_inventory = NodePath("resource_inventory")
 texture = ExtResource("2_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1995391119]
-shape = SubResource("CircleShape2D_wguj5")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1179388042]
+shape = SubResource("RectangleShape2D_ryrav")
 
 [node name="item_inventory" type="Node2D" parent="." unique_id=233860 node_paths=PackedStringArray("item_cooldown", "items_container")]
 script = ExtResource("3_i3pqv")

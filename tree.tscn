@@ -14,10 +14,12 @@ script = ExtResource("1_d2g23")
 harvestable = NodePath("harvestable")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187635715]
+position = Vector2(0, -82)
 scale = Vector2(2, 2)
 texture = ExtResource("1_brfkd")
 
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("3_gvmkm")]
+position = Vector2(0, -89)
 harvesting_health = 3
 harvestation_results = Dictionary[int, int]({
 0: 1
@@ -32,6 +34,7 @@ position = Vector2(0, 89)
 shape = SubResource("CapsuleShape2D_wguj5")
 
 [node name="game_collision" parent="." unique_id=1007742035 instance=ExtResource("4_d2g23")]
+position = Vector2(0, -89)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_collision" unique_id=694554390 groups=["navigation_polygon_source_geometry_group"]]
 position = Vector2(0, 89)

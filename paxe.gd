@@ -17,7 +17,6 @@ func _on_harvest(target: Harvestable, harvestation_result: Dictionary[GameResour
 
 func use(target_direction: Vector2) -> void:
 	harvester.start_harvesting()
-	print("Paxe used!")
 	rotation = target_direction.angle()
 	sprite.visible = true
 	var tween: Tween = get_tree().create_tween()

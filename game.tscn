@@ -17,9 +17,10 @@ source_geometry_mode = 2
 [node name="game" type="Node" unique_id=939668133]
 script = ExtResource("1_fc0e3")
 
-[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region")]
+[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container")]
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
+objects_container = NodePath("objects")
 
 [node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
 repeat_size = Vector2(64, 64)
@@ -32,16 +33,19 @@ texture = ExtResource("3_ryrav")
 [node name="Camera2D" type="Camera2D" parent="world" unique_id=870487946]
 zoom = Vector2(0.75, 0.75)
 
-[node name="Player" parent="world" unique_id=129920706 instance=ExtResource("1_80nbo")]
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="world/Player" unique_id=851298692]
-remote_path = NodePath("../../Camera2D")
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="world" unique_id=2028339851]
 navigation_polygon = SubResource("NavigationPolygon_7jktm")
 
-[node name="time_machine" parent="world" unique_id=1447871889 instance=ExtResource("4_7jktm")]
+[node name="objects" type="Node2D" parent="world" unique_id=33569107]
+y_sort_enabled = true
+
+[node name="time_machine" parent="world/objects" unique_id=1447871889 instance=ExtResource("4_7jktm")]
+
+[node name="Player" parent="world/objects" unique_id=129920706 instance=ExtResource("1_80nbo")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="world/objects/Player" unique_id=851298692]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player") instance=ExtResource("3_feb5d")]
 game = NodePath("..")
-player = NodePath("../world/Player")
+player = NodePath("../world/objects/Player")

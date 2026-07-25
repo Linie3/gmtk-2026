@@ -3,14 +3,20 @@ extends Node2D
 class_name World
 
 const tree: PackedScene = preload("res://tree.tscn")
+const rock: PackedScene = preload("res://rock.tscn")
 @export var navigation_region: NavigationRegion2D
+@export
+var objects_container: Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for position in get_random_positions(10, Rect2(Vector2(0, 0), Vector2(1000, 1000))):
+	for position in get_random_positions(15, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
-		add_child(new_tree)
+		objects_container.add_child(new_tree)
+	for position in get_random_positions(9, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
+		var new_rock : Node2D = rock.instantiate()
+		new_rock.position = position
+		objects_container.add_child(new_rock)
 	navigation_region.bake_navigation_polygon()
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
