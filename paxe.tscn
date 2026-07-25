@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cqgda1a7kxypl"]
 
 [ext_resource type="Script" uid="uid://c00i671c4umsr" path="res://paxe.gd" id="1_0b7hu"]
-[ext_resource type="Texture2D" uid="uid://bbrdfmmj5x1ee" path="res://paxe.png" id="2_7di7i"]
+[ext_resource type="Texture2D" uid="uid://bbrdfmmj5x1ee" path="res://assets/items/icons/paxe.png" id="2_7di7i"]
 [ext_resource type="PackedScene" uid="uid://ba5up4ur3wijb" path="res://harvester.tscn" id="3_7di7i"]
 
 [node name="paxe" type="Node2D" unique_id=602674080 node_paths=PackedStringArray("sprite", "harvester")]
 script = ExtResource("1_0b7hu")
 sprite = NodePath("Sprite2D")
 harvester = NodePath("harvester")
+item_name = &"slingshot"
 cooldown = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=863903901]

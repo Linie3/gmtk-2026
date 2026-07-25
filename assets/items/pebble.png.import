@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbrdfmmj5x1ee"
-path="res://.godot/imported/paxe.png-eb00a30c78f67c7ec6093c82353f567a.ctex"
+uid="uid://bnuxtce0la4b3"
+path="res://.godot/imported/pebble.png-9bc8c3484021f46972b0b03927a9a995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://paxe.png"
-dest_files=["res://.godot/imported/paxe.png-eb00a30c78f67c7ec6093c82353f567a.ctex"]
+source_file="res://assets/items/pebble.png"
+dest_files=["res://.godot/imported/pebble.png-9bc8c3484021f46972b0b03927a9a995.ctex"]
 
 [params]
 

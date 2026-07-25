@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bw3m257y0atbc"]
+
+[ext_resource type="Script" uid="uid://57wolga2e57c" path="res://item_slot.gd" id="1_0myub"]
+[ext_resource type="Texture2D" uid="uid://csgpp42xlsxxl" path="res://assets/items/icons/slingshot.png" id="1_n6cxc"]
+[ext_resource type="Texture2D" uid="uid://bt8qfwh7up7at" path="res://assets/item_slot_border_selected.png" id="2_i83bl"]
+
+[sub_resource type="Theme" id="Theme_i83bl"]
+
+[node name="item_slot" type="AspectRatioContainer" unique_id=186092705 node_paths=PackedStringArray("icon", "border")]
+offset_right = 96.0
+offset_bottom = 96.0
+theme = SubResource("Theme_i83bl")
+script = ExtResource("1_0myub")
+icon = NodePath("icon")
+border = NodePath("border")
+
+[node name="border" type="TextureRect" parent="." unique_id=116124859]
+layout_mode = 2
+texture = ExtResource("2_i83bl")
+
+[node name="icon" type="TextureRect" parent="." unique_id=1981043773]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_n6cxc")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cx1opinmxosre" path="res://item_inventory.gd" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://cqgda1a7kxypl" path="res://paxe.tscn" id="4_hqtel"]
+[ext_resource type="PackedScene" uid="uid://jaofcyu2omqt" path="res://slingshot.tscn" id="5_1jxqw"]
 [ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
 [ext_resource type="Script" uid="uid://cwffo07llm8wp" path="res://resource_inventory.gd" id="6_2hs0m"]
 
@@ -36,7 +37,10 @@ one_shot = true
 
 [node name="items" type="Node2D" parent="item_inventory" unique_id=1131518324]
 
+[node name="slingshot" parent="item_inventory/items" unique_id=552207262 instance=ExtResource("5_1jxqw")]
+
 [node name="paxe" parent="item_inventory/items" unique_id=602674080 instance=ExtResource("4_hqtel")]
+item_name = &"paxe"
 
 [node name="interacter" type="Area2D" parent="." unique_id=551174352]
 collision_layer = 4

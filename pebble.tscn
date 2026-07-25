@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dlrkrjt0dbkqs"]
+
+[ext_resource type="Script" uid="uid://cbtcblqwg63ku" path="res://pebble.gd" id="1_gfylr"]
+[ext_resource type="Texture2D" uid="uid://bnuxtce0la4b3" path="res://assets/items/pebble.png" id="2_4t2er"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
+radius = 7.071068
+
+[node name="pebble" type="Node2D" unique_id=542981856 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_gfylr")
+hitbox = NodePath("Area2D")
+speed = 1500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1541333077]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4t2er")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=146355651]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=927868118]
+shape = SubResource("CircleShape2D_wguj5")
