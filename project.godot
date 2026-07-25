@@ -58,6 +58,11 @@ use_item={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World Collision"
+2d_physics/layer_2="Harvesting"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

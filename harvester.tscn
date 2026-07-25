@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ba5up4ur3wijb"]
+
+[ext_resource type="Script" uid="uid://b8ipcod6hswe" path="res://harvester.gd" id="1_bqvda"]
+
+[node name="harvester" type="Node2D" unique_id=1003190747 node_paths=PackedStringArray("harvestable_area")]
+script = ExtResource("1_bqvda")
+harvestable_area = NodePath("harvest_area")
+
+[node name="harvest_area" type="Area2D" parent="." unique_id=1453486384]
+collision_layer = 0
+collision_mask = 2
+monitorable = false

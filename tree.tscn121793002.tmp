@@ -13,9 +13,8 @@ height = 260.0
 radius = 35.0
 height = 76.0
 
-[node name="tree" type="Node2D" unique_id=166922364 node_paths=PackedStringArray("harvestable")]
+[node name="tree" type="Node2D" unique_id=166922364]
 script = ExtResource("1_d2g23")
-harvestable = NodePath("harvestable")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187635715]
 scale = Vector2(2, 2)
@@ -33,13 +32,8 @@ position = Vector2(0, 89)
 shape = SubResource("CapsuleShape2D_wguj5")
 
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("3_gvmkm")]
-harvesting_health = 3
 
-[node name="harvestable_area" parent="harvestable" index="0" unique_id=1805849655]
-collision_mask = 2
-monitoring = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="harvestable/harvestable_area" index="0" unique_id=1713123852 groups=["navigation_polygon_source_geometry_group"]]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="harvestable/harvestable_area" parent_id_path=PackedInt32Array(316802169, 1805849655) index="0" unique_id=1713123852 groups=["navigation_polygon_source_geometry_group"]]
 position = Vector2(0, 89)
 shape = SubResource("CapsuleShape2D_wguj5")
 

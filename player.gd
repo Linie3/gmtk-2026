@@ -10,6 +10,5 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if (Input.is_action_pressed("use_item") && items.active_item != null && items.active_item_cooldown_finished):
-		print("Using item")
 		items.active_item.use(get_global_mouse_position() - global_position)
 		items.start_item_cooldown()
