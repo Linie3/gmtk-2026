@@ -18,6 +18,7 @@ source_geometry_mode = 2
 script = ExtResource("1_fc0e3")
 
 [node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region")]
+y_sort_enabled = true
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
 
