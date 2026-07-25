@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cepk0eqrxsygj"]
+
+[ext_resource type="Script" uid="uid://devwjh1l806g5" path="res://interaction_component.gd" id="1_l0w6l"]
+
+[node name="interaction_component" type="Node2D" unique_id=1904319827 node_paths=PackedStringArray("collision_node")]
+script = ExtResource("1_l0w6l")
+collision_node = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1130462367]
