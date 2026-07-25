@@ -6,14 +6,21 @@ static var instance: World
 static func add_object(object: Node2D) -> void:
 	instance._add_object(object)
 
+signal player_position_changed(new_position: Vector2)
+
 const tree: PackedScene = preload("res://tree.tscn")
 const rock: PackedScene = preload("res://rock.tscn")
 @export var navigation_region: NavigationRegion2D
 @export
 var objects_container: Node2D
+@export
+var player: Player
+var last_player_position: Vector2 = Vector2.ZERO
+
+func _init() -> void:
+	instance = self
 
 func _ready() -> void:
-	instance = self
 	for position in get_random_positions(15, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
@@ -23,6 +30,11 @@ func _ready() -> void:
 		new_rock.position = position
 		_add_object(new_rock)
 	navigation_region.bake_navigation_polygon()
+
+func _process(delta: float) -> void:
+	if last_player_position.distance_to(player.position) > 50:
+		player_position_changed.emit(player.position)
+		last_player_position = player.position
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []

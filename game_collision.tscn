@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://bljcf7p8p5rn7"]
 
+[ext_resource type="Script" uid="uid://bs4de67gempqd" path="res://game_collision.gd" id="1_ivak7"]
+
 [node name="game_collision" type="StaticBody2D" unique_id=1007742035]
+script = ExtResource("1_ivak7")
