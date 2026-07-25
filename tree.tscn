@@ -19,6 +19,9 @@ texture = ExtResource("1_brfkd")
 
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("3_gvmkm")]
 harvesting_health = 3
+harvestation_results = Dictionary[int, int]({
+0: 1
+})
 
 [node name="harvestable_area" parent="harvestable" index="0" unique_id=1805849655]
 collision_mask = 2

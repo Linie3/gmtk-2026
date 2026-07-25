@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cx1opinmxosre" path="res://items.gd" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://cqgda1a7kxypl" path="res://paxe.tscn" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
+[ext_resource type="Script" uid="uid://cwffo07llm8wp" path="res://resource_inventory.gd" id="6_2hs0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
 radius = 67.06713
@@ -12,10 +13,11 @@ radius = 67.06713
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 119.0042
 
-[node name="Player" type="CharacterBody2D" unique_id=709357860 node_paths=PackedStringArray("items")]
+[node name="Player" type="CharacterBody2D" unique_id=709357860 node_paths=PackedStringArray("items", "resource_inventory")]
 script = ExtResource("1_4flbx")
 speed = 500.0
 items = NodePath("item_inventory")
+resource_inventory = NodePath("resource_inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=847434924]
 texture = ExtResource("2_onrkg")
@@ -35,7 +37,8 @@ one_shot = true
 
 [node name="items" type="Node2D" parent="item_inventory" unique_id=1131518324]
 
-[node name="paxe" parent="item_inventory/items" unique_id=602674080 instance=ExtResource("4_hqtel")]
+[node name="paxe" parent="item_inventory/items" unique_id=602674080 node_paths=PackedStringArray("resource_inventory") instance=ExtResource("4_hqtel")]
+resource_inventory = NodePath("../../../resource_inventory")
 
 [node name="interacter" type="Area2D" parent="." unique_id=551174352]
 collision_layer = 4
@@ -44,3 +47,6 @@ script = ExtResource("5_sweqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interacter" unique_id=908140582]
 shape = SubResource("CircleShape2D_hqtel")
+
+[node name="resource_inventory" type="Node" parent="." unique_id=1053739663]
+script = ExtResource("6_2hs0m")

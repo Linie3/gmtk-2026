@@ -2,8 +2,8 @@ extends Node2D
 
 class_name Harvester
 
-signal first_harvest(harvestable: Harvestable)
-signal harvest(harvestable: Harvestable)
+signal first_harvest(harvestable: Harvestable, harvestation_result: Dictionary[GameResource.ResourceType, int])
+signal harvest(harvestable: Harvestable, harvestation_result: Dictionary[GameResource.ResourceType, int])
 
 @export
 var harvestable_area: Area2D
@@ -24,7 +24,7 @@ func _on_area_entered(area: Area2D) -> void:
 	var target: Node = area.get_parent()
 	if (target is Harvestable && harvesting_enabled):
 		harvested_harvestables.append(target)
-		target.harvest()
+		var harvestation_result: Dictionary[GameResource.ResourceType, int] = target.harvest()
 		if (harvested_harvestables.size() == 1):
-			first_harvest.emit(target)
-		harvest.emit(target)
+			first_harvest.emit(target, harvestation_result)
+		harvest.emit(target, harvestation_result)

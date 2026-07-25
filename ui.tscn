@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://caswrd3wu1hc" path="res://ui.gd" id="1_fyqef"]
 
-[node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer")]
+[node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer", "resources_container")]
 script = ExtResource("1_fyqef")
-timer = NodePath("MarginContainer/HBoxContainer/Label")
+timer = NodePath("MarginContainer/Label")
+resources_container = NodePath("MarginContainer2/resources_container")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=268380869]
 offset_right = 107.0
@@ -14,9 +15,21 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1072851609]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1038445276]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1038445276]
 layout_mode = 2
 text = "Time: 23.3s"
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1957480883]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="resources_container" type="VBoxContainer" parent="MarginContainer2" unique_id=649932106]
+layout_mode = 2

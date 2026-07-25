@@ -33,5 +33,6 @@ navigation_polygon = SubResource("NavigationPolygon_7jktm")
 
 [node name="time_machine" parent="world" unique_id=1447871889 instance=ExtResource("4_7jktm")]
 
-[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game") instance=ExtResource("3_feb5d")]
+[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player") instance=ExtResource("3_feb5d")]
 game = NodePath("..")
+player = NodePath("../world/Player")

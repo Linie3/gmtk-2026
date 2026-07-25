@@ -4,6 +4,8 @@ class_name Player
 
 @export var speed: float = 30.0
 @export var items: ItemInventory
+@export
+var resource_inventory: ResourceInventory
 
 func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
