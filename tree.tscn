@@ -7,6 +7,10 @@
 radius = 33.0
 height = 260.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wguj5"]
+radius = 35.0
+height = 76.0
+
 [node name="tree" type="Node2D" unique_id=166922364]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187635715]
@@ -17,5 +21,11 @@ texture = ExtResource("1_brfkd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_component/Area2D" parent_id_path=PackedInt32Array(1904319827, 1130462367) index="0" unique_id=1361048471]
 shape = SubResource("CapsuleShape2D_73o7e")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=970753389]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=694554390 groups=["navigation_polygon_source_geometry_group"]]
+position = Vector2(0, 89)
+shape = SubResource("CapsuleShape2D_wguj5")
 
 [editable path="interaction_component"]

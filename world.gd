@@ -3,6 +3,7 @@ extends Node2D
 class_name World
 
 const tree: PackedScene = preload("res://tree.tscn")
+@export var navigation_region: NavigationRegion2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +11,7 @@ func _ready() -> void:
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
 		add_child(new_tree)
+	navigation_region.bake_navigation_polygon()
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []

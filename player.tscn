@@ -3,9 +3,17 @@
 [ext_resource type="Script" uid="uid://eufihikpd4ir" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_onrkg"]
 
-[node name="Player" type="Node2D" unique_id=129920706]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
+radius = 67.06713
+
+[node name="Player" type="CharacterBody2D" unique_id=709357860]
 script = ExtResource("1_4flbx")
-speed = 7.0
+speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=847434924]
 texture = ExtResource("2_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1995391119]
+shape = SubResource("CircleShape2D_wguj5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1179388042]
