@@ -6,9 +6,9 @@
 
 [node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer", "resources_container", "health_label", "item_slots_container")]
 script = ExtResource("1_fyqef")
-timer = NodePath("MarginContainer/HBoxContainer/Label")
+timer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
 resources_container = NodePath("MarginContainer2/resources_container")
-health_label = NodePath("MarginContainer4/HBoxContainer/Label")
+health_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Label")
 item_slots_container = NodePath("MarginContainer3/HBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=268380869]
@@ -19,18 +19,34 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2114042591]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=696628798]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1284968890]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2114042591]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1284968890]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_27fn8")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1038445276]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1038445276]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "23.3s"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=668960817]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1071432676]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_m6e0p")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=516673923]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1957480883]
 anchors_preset = 1
@@ -66,28 +82,3 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3" unique_id=176474788]
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="MarginContainer4" type="MarginContainer" parent="." unique_id=260575113]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer4" unique_id=668960817]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer4/HBoxContainer" unique_id=1071432676]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("2_m6e0p")
-
-[node name="Label" type="Label" parent="MarginContainer4/HBoxContainer" unique_id=516673923]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "0"

@@ -18,11 +18,11 @@ func _process(delta: float) -> void:
 		Game.start_wave()
 
 func _on_interacter_entered_range(interacter: Interacter) -> void:
-	if (interacter.get_parent() is Player):
+	if (interacter.get_parent() is Entity && interacter.get_parent().entity_component is Player):
 		player_in_range = true
 		popup.visible = true
 
 func _on_interacter_left_range(interacter: Interacter) -> void:
-	if (interacter.get_parent() is Player):
+	if (interacter.get_parent() is Entity && interacter.get_parent().entity_component is Player):
 		player_in_range = false
 		popup.visible = false
