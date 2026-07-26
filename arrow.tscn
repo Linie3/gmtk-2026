@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bdp6o325tcjck"]
+
+[ext_resource type="Script" uid="uid://cwmbdaeflen50" path="res://arrow.gd" id="1_l5ahi"]
+[ext_resource type="Texture2D" uid="uid://lfw5ke42s3gw" path="res://assets/items/arrow.png" id="2_2ndhl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73o7e"]
+radius = 2.8284273
+height = 18.384777
+
+[node name="arrow" type="Node2D" unique_id=1481591436 node_paths=PackedStringArray("hitbox")]
+scale = Vector2(2, 2)
+script = ExtResource("1_l5ahi")
+hitbox = NodePath("Area2D")
+speed = 2000.0
+pierce_count = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=46320019]
+rotation = 0.7853982
+texture = ExtResource("2_2ndhl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1238866146]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2092388725]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_73o7e")

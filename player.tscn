@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
 [ext_resource type="Script" uid="uid://cwffo07llm8wp" path="res://resource_inventory.gd" id="6_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://crn48b5vh4i7l" path="res://carving_knife.tscn" id="6_n7ghd"]
+[ext_resource type="PackedScene" uid="uid://duhiealokayjp" path="res://bow.tscn" id="7_nvl01"]
 [ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="8_dw050"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
@@ -44,6 +45,8 @@ item_name = &"paxe"
 [node name="slingshot" parent="item_inventory/items" unique_id=552207262 instance=ExtResource("5_1jxqw")]
 
 [node name="carving_knife" parent="item_inventory/items" unique_id=1222330914 instance=ExtResource("6_n7ghd")]
+
+[node name="bow" parent="item_inventory/items" unique_id=2131441175 instance=ExtResource("7_nvl01")]
 
 [node name="interacter" type="Area2D" parent="." unique_id=551174352]
 collision_layer = 4
