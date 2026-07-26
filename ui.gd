@@ -13,6 +13,10 @@ var item_slots_container: Control
 var death_dialog: Control
 @export
 var death_dialog_button: Button
+@export
+var instructions_dialog: Control
+@export
+var instructions_confirm_button: Button
 var resource_container: PackedScene = preload("res://resource_container.tscn")
 var resource_containers: Dictionary[GameResource.ResourceType, Control] = {}
 var item_slot: PackedScene = preload("res://item_slot.tscn")
@@ -43,6 +47,16 @@ func _ready() -> void:
 	death_dialog.visible = false
 	player.death.connect(func(): death_dialog.visible = true)
 	death_dialog_button.pressed.connect(func(): game.restart_game())
+	instructions_confirm_button.pressed.connect(func(): 
+		instructions_dialog.visible = false
+		Engine.time_scale = 1.0
+		)
+	if NewAutoloadScript.instruction_page:
+		NewAutoloadScript.instruction_page = false
+		instructions_dialog.visible = true
+		Engine.time_scale = 0.0
+	else:
+		instructions_dialog.visible = false
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)

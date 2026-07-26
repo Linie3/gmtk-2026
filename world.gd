@@ -71,19 +71,20 @@ func _process(delta: float) -> void:
 func generate_new_world(stage: int) -> void:
 	for child in objects_container.get_children():
 		child.queue_free()
-	for position in get_random_positions(30, Rect2(Vector2(-2000, -2000), Vector2(4000, 4000))):
+	for position in get_random_positions(200, Rect2(Vector2(-4000, -4000), Vector2(8000, 8000))):
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
 		_add_object(new_tree)
-	for position in get_random_positions(20, Rect2(Vector2(-2000, -2000), Vector2(4000, 4000))):
+	for position in get_random_positions(120, Rect2(Vector2(-4000, -4000), Vector2(8000, 8000))):
 		var new_rock : Node2D = rock.instantiate()
 		new_rock.position = position
-		_add_object(new_rock)
-	var item_box: ItemBox = load("res://item_box.tscn").instantiate()
-	item_box.player_resource_inventory = player.resource_inventory
-	item_box.set_item(items[randi_range(0, items.size() - 1)].instantiate())
-	item_box.position = Vector2(get_random_positions(1, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000)))[0])
-	add_object(item_box)
+		_add_object(new_rock)	
+	if items.size() > 0:
+		var item_box: ItemBox = load("res://item_box.tscn").instantiate()
+		item_box.player_resource_inventory = player.resource_inventory
+		item_box.set_item(items[randi_range(0, items.size() - 1)].instantiate())
+		item_box.position = Vector2(get_random_positions(1, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000)))[0])
+		add_object(item_box)
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []

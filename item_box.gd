@@ -10,16 +10,18 @@ var resources_container: Control
 var interactable: Interactable
 @export
 var cost_container: Control
+@export
+var interaction_button: Control
 var resource_container_scene: PackedScene = preload("res://resource_container.tscn")
 var player_resource_inventory: ResourceInventory
 var resource_containers: Dictionary[GameResource.ResourceType, ResourceContainer] = {}
 var item: Item
 
 func _ready() -> void:
-	interactable.hovered.connect(_on_hovered)
-	interactable.unhovered.connect(_on_unhovered)
 	interactable.interacted.connect(_on_interacted)
-	cost_container.visible = false
+	interactable.interacter_entered_range.connect(on_interacter_entered_range)
+	interactable.interacter_left_range.connect(on_interacter_left_range)
+	interaction_button.visible = false
 
 func _on_interacted() -> void:
 	if player_resource_inventory.has_resources(item.repair_cost):
@@ -46,9 +48,9 @@ func set_item(new_item: Item) -> void:
 func on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	if resource_containers.has(resource_type):
 		resource_containers[resource_type].insufficient_resources = amount < item.repair_cost[resource_type]
-	
-func _on_hovered() -> void:
-	cost_container.visible = true	
-	
-func _on_unhovered() -> void:
-	cost_container.visible = false
+
+func on_interacter_entered_range(interacter: Interacter) -> void:
+	interaction_button.visible = true
+
+func on_interacter_left_range(interacter: Interacter) -> void:
+	interaction_button.visible = false
