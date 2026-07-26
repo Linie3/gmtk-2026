@@ -6,7 +6,7 @@
 [node name="slingshot" type="Node2D" unique_id=552207262]
 script = ExtResource("1_81g13")
 item_name = &"slingshot"
-cooldown = 0.01
+cooldown = 0.7
 usage_cost = Dictionary[int, int]({
 1: 1
 })

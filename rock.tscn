@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://drdko68qysbsm" path="res://assets/rock.png" id="2_46y1q"]
 [ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="3_gtey5"]
+[ext_resource type="PackedScene" uid="uid://crfibr2n56jko" path="res://healthbar.tscn" id="4_46y1q"]
 [ext_resource type="PackedScene" uid="uid://bljcf7p8p5rn7" path="res://game_collision.tscn" id="4_nnrwk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gtey5"]
@@ -34,5 +35,12 @@ shape = SubResource("CapsuleShape2D_gtey5")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="game_collision" unique_id=768274165 groups=["navigation_polygon_source_geometry_group"]]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gtey5")
+
+[node name="healthbar" parent="." unique_id=1696183414 node_paths=PackedStringArray("harvestable") instance=ExtResource("4_46y1q")]
+offset_left = -32.28
+offset_top = -101.67
+offset_right = -32.28
+offset_bottom = -101.67
+harvestable = NodePath("../harvestable")
 
 [editable path="harvestable"]

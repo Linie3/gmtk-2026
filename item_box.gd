@@ -48,9 +48,12 @@ func set_item(new_item: Item) -> void:
 func on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	if resource_containers.has(resource_type):
 		resource_containers[resource_type].insufficient_resources = amount < item.repair_cost[resource_type]
+	if player_resource_inventory.has_resources(item.repair_cost) and interactable.in_range:
+		interaction_button.visible = true
 
 func on_interacter_entered_range(interacter: Interacter) -> void:
-	interaction_button.visible = true
+	if player_resource_inventory.has_resources(item.repair_cost):
+		interaction_button.visible = true
 
 func on_interacter_left_range(interacter: Interacter) -> void:
 	interaction_button.visible = false

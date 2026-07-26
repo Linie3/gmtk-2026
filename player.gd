@@ -14,6 +14,8 @@ var resource_inventory: ResourceInventory
 var entity_component: CharacterBody2D
 @export
 var harvestable: Harvestable
+@export
+var sprite: Sprite2D
 
 func _ready() -> void:
 	harvestable.harvestable_depleted.connect(func() -> void: death.emit())
@@ -22,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	entity_component.velocity = direction * speed
 	entity_component.move_and_slide()
+	sprite.flip_h = direction.x < 0
 
 func _process(delta: float) -> void:
 	if (Input.is_action_pressed("use_item")):

@@ -32,6 +32,7 @@ shape = SubResource("CapsuleShape2D_yvgc5")
 shape = SubResource("CapsuleShape2D_yvgc5")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=531824927]
+z_index = 1
 offset_left = 86.215
 offset_top = -78.03
 offset_right = 141.21504

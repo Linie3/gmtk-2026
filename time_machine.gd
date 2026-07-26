@@ -56,7 +56,6 @@ func generate_repair_cost(amount: int) -> void:
 
 	repair_cost.clear()
 	var available_resources: Array = GameResource.get_resource_types()
-	available_resources.shuffle()
 	var base_share: int = amount / available_resources.size()
 	var remainder: int = amount % available_resources.size()
 	

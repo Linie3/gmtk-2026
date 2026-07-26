@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://cqshiixd3xjvd" path="res://world.gdshader" id="3_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_7jktm"]
+[ext_resource type="AudioStream" uid="uid://xnvoxyac0fnh" path="res://assets/music/Epic - Ascension.wav" id="8_j5wjh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mt3p"]
 shader = ExtResource("3_j5wjh")
@@ -32,10 +33,11 @@ shader_parameter/radius = 4000.00019
 shader_parameter/softness = 2000.000095
 shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
-[node name="game" type="Node" unique_id=939668133 node_paths=PackedStringArray("world", "player_component")]
+[node name="game" type="Node" unique_id=939668133 node_paths=PackedStringArray("world", "player_component", "audio_stream_player")]
 script = ExtResource("1_fc0e3")
 world = NodePath("world")
 player_component = NodePath("world/objects/Player")
+audio_stream_player = NodePath("AudioStreamPlayer")
 
 [node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player_component") instance=ExtResource("3_feb5d")]
 layer = 2
@@ -100,3 +102,5 @@ wait_time = 14.0
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=769637528]
+stream = ExtResource("8_j5wjh")
+autoplay = true

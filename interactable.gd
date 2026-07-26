@@ -15,7 +15,8 @@ static var counter: int = 0:
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-			
+var in_range: bool = false
+		
 @export
 var collision_node: Area2D
 
@@ -31,10 +32,12 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if (area is Interacter):
+		in_range = true
 		interacter_entered_range.emit(area)
 
 func _on_area_exited(area: Area2D) -> void:
 	if (area is Interacter):
+		in_range = false
 		interacter_left_range.emit(area)
 
 func _on_mouse_entered() -> void:

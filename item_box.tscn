@@ -25,6 +25,7 @@ texture = ExtResource("2_klfni")
 shape = SubResource("CircleShape2D_wguj5")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=214282559]
+z_index = 1
 offset_left = 86.215
 offset_top = -78.03
 offset_right = 193.215
