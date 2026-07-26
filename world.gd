@@ -26,6 +26,8 @@ var game: Game
 var blackout_max_radius: float
 @export
 var blackout_min_radius: float
+@export
+var enemy_timer: Timer
 var player: Player
 var last_player_position: Vector2 = Vector2.ZERO
 var navigation_update_scheduled: bool = false
@@ -34,6 +36,10 @@ var blackout_radius: float:
 		blackout_rect.material.set_shader_parameter("radius", value)
 		blackout_radius = value
 var radius_tween: Tween
+var enemies: Array[PackedScene] = [
+	preload("res://slime.tscn"),
+	preload("res://ghost.tscn"),
+]
 
 func _init() -> void:
 	instance = self
@@ -50,6 +56,7 @@ func _ready() -> void:
 		var new_rock : Node2D = rock.instantiate()
 		new_rock.position = position
 		_add_object(new_rock)
+	enemy_timer.timeout.connect(spawn_enemy)
 
 func _process(delta: float) -> void:
 	blackout_rect.material.set_shader_parameter("blackout_position", Vector2(0, 0))
@@ -92,10 +99,22 @@ func _on_countdown_state_changed(new_state: Game.CountdownState) -> void:
 			radius_tween = get_tree().create_tween()
 			radius_tween.tween_property(self, "blackout_radius", blackout_min_radius, 3.0)
 			radius_tween.finished.connect(_on_radius_tween_finished)
+			enemy_timer.wait_time = 2
+			enemy_timer.start()
 		Game.CountdownState.COUNTUP:
 			radius_tween = get_tree().create_tween()
 			radius_tween.tween_property(self, "blackout_radius", blackout_max_radius, 3.0)
+			enemy_timer.wait_time = 14
+			enemy_timer.start()
 
 func _on_radius_tween_finished() -> void:
 	if game.countdown_state == Game.CountdownState.COUNTUP:
 		blackout_rect.material.set_shader_parameter("blackout_enabled", false)
+
+func spawn_enemy() -> void:
+	randomize()
+	var enemy: Node = enemies[randi_range(0, enemies.size() - 1)].instantiate()
+	var random_angle: float = randf_range(0.0, TAU)
+	var spawn_offset: Vector2 = Vector2.RIGHT.rotated(random_angle) * 1500
+	enemy.position = last_player_position + spawn_offset
+	add_object(enemy)

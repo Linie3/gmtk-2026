@@ -39,7 +39,7 @@ script = ExtResource("1_fc0e3")
 world = NodePath("world")
 player_component = NodePath("world/objects/Player")
 
-[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component", "camera", "blackout_rect", "game")]
+[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component", "camera", "blackout_rect", "game", "enemy_timer")]
 material = SubResource("ShaderMaterial_1mt3p")
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
@@ -50,6 +50,7 @@ blackout_rect = NodePath("CanvasLayer/ColorRect")
 game = NodePath("..")
 blackout_max_radius = 3250.0
 blackout_min_radius = 1500.0
+enemy_timer = NodePath("../Timer")
 
 [node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
 repeat_size = Vector2(64, 64)
@@ -96,3 +97,7 @@ grow_vertical = 2
 layer = 2
 game = NodePath("..")
 player_component = NodePath("../world/objects/Player")
+
+[node name="Timer" type="Timer" parent="." unique_id=289750692]
+wait_time = 14.0
+autostart = true
