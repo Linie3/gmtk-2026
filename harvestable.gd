@@ -12,6 +12,7 @@ var current_health: int = 1
 var harvestation_results: Dictionary[GameResource.ResourceType, int]
 
 func _ready() -> void:
+	harvesting_health = round(float(harvesting_health) * Game.instance.difficulty_factor)
 	current_health = harvesting_health
 
 func harvest(damage: int) -> Dictionary[GameResource.ResourceType, int]:

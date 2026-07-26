@@ -16,6 +16,8 @@ var item_name: StringName
 var cooldown: float = 1.0
 @export
 var usage_cost: Dictionary[GameResource.ResourceType, int] = {}
+@export
+var repair_cost: Dictionary[GameResource.ResourceType, int] = {}
 
 func use(target_direction: Vector2) -> void:
 	pass

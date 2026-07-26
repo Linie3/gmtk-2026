@@ -40,6 +40,11 @@ var enemies: Array[PackedScene] = [
 	preload("res://slime.tscn"),
 	preload("res://ghost.tscn"),
 ]
+var items = [
+	preload("res://bow.tscn"),
+	preload("res://carving_knife.tscn"),
+	preload("res://slingshot.tscn"),
+]
 
 func _init() -> void:
 	instance = self
@@ -48,15 +53,8 @@ func _ready() -> void:
 	blackout_radius = blackout_max_radius
 	game.countdown_state_changed.connect(_on_countdown_state_changed)
 	player = player_component.entity_component
-	for position in get_random_positions(15, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
-		var new_tree : Node2D = tree.instantiate()
-		new_tree.position = position
-		_add_object(new_tree)
-	for position in get_random_positions(9, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
-		var new_rock : Node2D = rock.instantiate()
-		new_rock.position = position
-		_add_object(new_rock)
 	enemy_timer.timeout.connect(spawn_enemy)
+	game.next_stage.connect(generate_new_world)
 
 func _process(delta: float) -> void:
 	blackout_rect.material.set_shader_parameter("blackout_position", Vector2(0, 0))
@@ -69,6 +67,23 @@ func _process(delta: float) -> void:
 		if last_player_position.distance_to(player_component.position) > 50:
 			player_position_changed.emit(player_component.position)
 			last_player_position = player_component.position
+
+func generate_new_world(stage: int) -> void:
+	for child in objects_container.get_children():
+		child.queue_free()
+	for position in get_random_positions(30, Rect2(Vector2(-2000, -2000), Vector2(4000, 4000))):
+		var new_tree : Node2D = tree.instantiate()
+		new_tree.position = position
+		_add_object(new_tree)
+	for position in get_random_positions(20, Rect2(Vector2(-2000, -2000), Vector2(4000, 4000))):
+		var new_rock : Node2D = rock.instantiate()
+		new_rock.position = position
+		_add_object(new_rock)
+	var item_box: ItemBox = load("res://item_box.tscn").instantiate()
+	item_box.player_resource_inventory = player.resource_inventory
+	item_box.set_item(items[randi_range(0, items.size() - 1)].instantiate())
+	item_box.position = Vector2(get_random_positions(1, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000)))[0])
+	add_object(item_box)
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []
@@ -97,7 +112,7 @@ func _on_countdown_state_changed(new_state: Game.CountdownState) -> void:
 		Game.CountdownState.COUNTDOWN:
 			blackout_rect.material.set_shader_parameter("blackout_enabled", true)
 			radius_tween = get_tree().create_tween()
-			radius_tween.tween_property(self, "blackout_radius", blackout_min_radius, 3.0)
+			radius_tween.tween_property(self, "blackout_radius", blackout_min_radius, (game.timer / 1000) - 1)
 			radius_tween.finished.connect(_on_radius_tween_finished)
 			enemy_timer.wait_time = 2
 			enemy_timer.start()

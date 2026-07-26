@@ -14,6 +14,8 @@ var animation_sprite: AnimatedSprite2D
 var channel_timer: Timer
 @export
 var jump_timer: Timer
+@export
+var harvestable_component: Harvestable
 var attack_direction: Vector2 = Vector2.ZERO
 var attacking: bool = false
 var channeling: bool = false

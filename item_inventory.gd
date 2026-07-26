@@ -20,7 +20,7 @@ func _ready() -> void:
 	item_cooldown.timeout.connect(func(): active_item_cooldown_finished = true)
 	for child in items_container.get_children():
 		if (child is Item):
-			add_item(child)
+			_add_item(child)
 
 func _process(_delta: float) -> void:
 	var active_item_movement = round((1 if Input.is_action_just_released(&"next_item") else 0) - (1 if Input.is_action_just_released(&"previous_item") else 0))
@@ -36,6 +36,10 @@ func start_item_cooldown() -> void:
 	item_cooldown.start()
 
 func add_item(item: Item) -> void:
+	add_child(item)
+	_add_item(item)
+
+func _add_item(item: Item) -> void:
 	item.entity = get_parent()
 	items.append(item)
 	items_changed.emit(items)
@@ -52,7 +56,7 @@ func remove_item(item: Item) -> void:
 	items_changed.emit(items)
 
 func use_active_item(direction: Vector2) -> void:
-	if (active_item && active_item_cooldown_finished && resource_inventory.has_enough_resources(active_item.usage_cost)):
+	if (active_item && active_item_cooldown_finished && resource_inventory.has_resources(active_item.usage_cost)):
 		resource_inventory.remove_resources(active_item.usage_cost)
 		start_item_cooldown()
 		active_item.use(direction)

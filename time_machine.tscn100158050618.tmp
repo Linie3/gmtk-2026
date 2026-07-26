@@ -9,13 +9,11 @@
 radius = 73.0
 height = 178.0
 
-[node name="time_machine" type="Node2D" unique_id=1447871889 node_paths=PackedStringArray("interaction_button", "popup", "interactable", "resources_container")]
+[node name="time_machine" type="Node2D" unique_id=1447871889 node_paths=PackedStringArray("popup", "interactable", "resources_container")]
 script = ExtResource("1_1mt3p")
-interaction_button = NodePath("PanelContainer/MarginContainer/Control/Button")
-popup = NodePath("PanelContainer")
+popup = NodePath("PanelContainer/MarginContainer/Control/Button")
 interactable = NodePath("interactable")
 resources_container = NodePath("PanelContainer/MarginContainer/Control/resource_containers")
-base_cost = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=283012120]
 scale = Vector2(3.275, 3.275)
@@ -47,16 +45,16 @@ theme_override_constants/margin_bottom = 10
 [node name="Control" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=234487866]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Control" unique_id=1581267453]
-layout_mode = 2
-text = "Repair cost"
-
-[node name="resource_containers" type="VBoxContainer" parent="PanelContainer/MarginContainer/Control" unique_id=1164791613]
-layout_mode = 2
-
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/Control" unique_id=1799762193]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "E"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Control" unique_id=1581267453]
+layout_mode = 2
+text = "Cost"
+
+[node name="resource_containers" type="VBoxContainer" parent="PanelContainer/MarginContainer/Control" unique_id=1164791613]
+layout_mode = 2
 
 [editable path="interactable"]

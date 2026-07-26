@@ -42,7 +42,7 @@ func _ready() -> void:
 			child.harvested.connect(func(new_health: int): health_label.text = str(new_health))
 	death_dialog.visible = false
 	player.death.connect(func(): death_dialog.visible = true)
-	death_dialog_button.pressed.connect(func(): game.start_game())
+	death_dialog_button.pressed.connect(func(): game.restart_game())
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)

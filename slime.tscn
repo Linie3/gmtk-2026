@@ -73,7 +73,7 @@ animation = &"attack"
 autoplay = "default"
 speed_scale = 0.575
 
-[node name="slime" type="Node" parent="." unique_id=1642683091 node_paths=PackedStringArray("hitbox", "entity", "navigation_agent", "animation_sprite", "channel_timer", "jump_timer")]
+[node name="slime" type="Node" parent="." unique_id=1642683091 node_paths=PackedStringArray("hitbox", "entity", "navigation_agent", "animation_sprite", "channel_timer", "jump_timer", "harvestable_component")]
 script = ExtResource("1_5jc4t")
 hitbox = NodePath("../Area2D")
 entity = NodePath("..")
@@ -81,6 +81,7 @@ navigation_agent = NodePath("../NavigationAgent2D")
 animation_sprite = NodePath("../AnimatedSprite2D")
 channel_timer = NodePath("../channel")
 jump_timer = NodePath("../jump")
+harvestable_component = NodePath("../harvestable")
 
 [node name="channel" type="Timer" parent="." unique_id=301099593]
 wait_time = 0.5

@@ -10,6 +10,10 @@ cooldown = 0.01
 usage_cost = Dictionary[int, int]({
 1: 1
 })
+repair_cost = Dictionary[int, int]({
+0: 5,
+1: 5
+})
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=617217489]
 visible = false

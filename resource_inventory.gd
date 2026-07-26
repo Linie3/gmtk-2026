@@ -26,7 +26,7 @@ func remove_resources(old_resources: Dictionary[GameResource.ResourceType, int])
 	for resource_type in old_resources.keys():
 		remove_resource(resource_type, old_resources[resource_type])
 
-func has_enough_resources(required_resources: Dictionary[GameResource.ResourceType, int]) -> bool:
+func has_resources(required_resources: Dictionary[GameResource.ResourceType, int]) -> bool:
 	for resource_type in required_resources.keys():
 		if (resources[resource_type] < required_resources[resource_type]):
 			return false

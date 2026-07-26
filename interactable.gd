@@ -6,6 +6,7 @@ signal hovered()
 signal unhovered()
 signal interacter_entered_range(interacter: Interacter)
 signal interacter_left_range(interacter: Interacter)
+signal interacted()
 
 static var counter: int = 0:
 	set(value):
@@ -23,6 +24,10 @@ func _ready() -> void:
 	collision_node.area_exited.connect(_on_area_exited)
 	collision_node.mouse_entered.connect(_on_mouse_entered)
 	collision_node.mouse_exited.connect(_on_mouse_exited)
+
+func _process(delta: float) -> void:
+	if (Input.is_action_just_pressed("interact")):
+		interacted.emit()
 
 func _on_area_entered(area: Area2D) -> void:
 	if (area is Interacter):

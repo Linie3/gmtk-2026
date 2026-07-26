@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://biysndh5thtld"]
+
+[ext_resource type="Script" uid="uid://cgyuo0ho15y2j" path="res://item_box.gd" id="1_kmrrg"]
+[ext_resource type="Texture2D" uid="uid://3lhg6lgubplc" path="res://assets/items/icons/bow.png" id="2_klfni"]
+[ext_resource type="PackedScene" uid="uid://cepk0eqrxsygj" path="res://interactable.tscn" id="2_tudev"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
+radius = 44.0
+
+[node name="item_box" type="Node2D" unique_id=1235483520 node_paths=PackedStringArray("sprite", "resources_container", "interactable", "cost_container")]
+script = ExtResource("1_kmrrg")
+sprite = NodePath("Sprite2D")
+resources_container = NodePath("PanelContainer/MarginContainer/Control/resource_containers")
+interactable = NodePath("interactable")
+cost_container = NodePath("PanelContainer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641014773]
+scale = Vector2(3, 3)
+texture = ExtResource("2_klfni")
+
+[node name="interactable" parent="." unique_id=1904319827 instance=ExtResource("2_tudev")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable/Area2D" parent_id_path=PackedInt32Array(1904319827, 1130462367) index="0" unique_id=1291534561]
+shape = SubResource("CircleShape2D_wguj5")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=878319164]
+offset_left = 39.0
+offset_top = -45.0
+offset_right = 94.0
+offset_bottom = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=452541816]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1563632993]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Control" unique_id=1465890858]
+layout_mode = 2
+text = "Cost"
+
+[node name="resource_containers" type="VBoxContainer" parent="PanelContainer/MarginContainer/Control" unique_id=605023716]
+layout_mode = 2
+
+[editable path="interactable"]
