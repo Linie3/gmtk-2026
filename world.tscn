@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bbqcy5hq1hfwb"]
+
+[ext_resource type="Shader" uid="uid://cqshiixd3xjvd" path="res://world.gdshader" id="1_pkg7o"]
+[ext_resource type="Script" uid="uid://beobasoccyje2" path="res://world.gd" id="2_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="3_ioo17"]
+[ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cr3l7x8g53tq4" path="res://player.tscn" id="5_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://cl3f7itfl685q" path="res://slime.tscn" id="6_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://ca226f07tmb04" path="res://ghost.tscn" id="7_2o6r5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mt3p"]
+shader = ExtResource("1_pkg7o")
+shader_parameter/blackout_position = Vector2(0, 0)
+shader_parameter/blackout_enabled = false
+shader_parameter/radius = 200.0
+shader_parameter/softness = 80.0
+shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7jktm"]
+vertices = PackedVector2Array(986.8281, 642.6797, -2004.8906, 2119.1328, -1000.3828, -661.39844, 909.8125, -695.46094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1023, -693, -2062, 2183, 1020, 662, 940, -728)])
+parsed_collision_mask = 4294967041
+source_geometry_mode = 1
+agent_radius = 64.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wguj5"]
+shader = ExtResource("1_pkg7o")
+shader_parameter/blackout_position = Vector2(0, 0)
+shader_parameter/blackout_enabled = false
+shader_parameter/radius = 4000.00019
+shader_parameter/softness = 2000.000095
+shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[node name="world" type="Node2D" unique_id=1363536293 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component", "camera", "blackout_rect", "game")]
+material = SubResource("ShaderMaterial_1mt3p")
+script = ExtResource("2_gbfbk")
+navigation_region = NodePath("NavigationRegion2D")
+objects_container = NodePath("objects")
+player_component = NodePath("objects/Player")
+camera = NodePath("Camera2D")
+blackout_rect = NodePath("CanvasLayer/ColorRect")
+game = NodePath("")
+blackout_max_radius = 3250.0
+blackout_min_radius = 1500.0
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1936723763]
+repeat_size = Vector2(64, 64)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=661719516]
+position = Vector2(64, 64)
+texture = ExtResource("3_ioo17")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=968134064]
+zoom = Vector2(0.5, 0.5)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=895510665]
+position = Vector2(2, -54)
+navigation_polygon = SubResource("NavigationPolygon_7jktm")
+
+[node name="objects" type="Node2D" parent="." unique_id=1360957509 groups=["navigation_polygon_source_geometry_group"]]
+y_sort_enabled = true
+
+[node name="time_machine" parent="objects" unique_id=1447871889 instance=ExtResource("4_wse8f")]
+
+[node name="Player" parent="objects" unique_id=709357860 instance=ExtResource("5_ic0uy")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="objects/Player" unique_id=438002081]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="slime" parent="objects" unique_id=61383222 instance=ExtResource("6_k3n1d")]
+position = Vector2(-1452, 1585)
+
+[node name="CharacterBody2D" parent="objects" unique_id=418067112 instance=ExtResource("7_2o6r5")]
+position = Vector2(1268, -688)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1578062944]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=937329598]
+material = SubResource("ShaderMaterial_wguj5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

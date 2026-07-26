@@ -59,12 +59,13 @@ shape = SubResource("CircleShape2D_hqtel")
 [node name="resource_inventory" type="Node" parent="." unique_id=1053739663]
 script = ExtResource("6_2hs0m")
 
-[node name="player" type="Node" parent="." unique_id=1181283719 node_paths=PackedStringArray("items", "resource_inventory", "entity_component")]
+[node name="player" type="Node" parent="." unique_id=1181283719 node_paths=PackedStringArray("items", "resource_inventory", "entity_component", "harvestable")]
 script = ExtResource("1_4flbx")
 speed = 400.0
 items = NodePath("../item_inventory")
 resource_inventory = NodePath("../resource_inventory")
 entity_component = NodePath("..")
+harvestable = NodePath("../harvestable")
 
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("8_dw050")]
 harvesting_health = 5

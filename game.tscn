@@ -34,8 +34,10 @@ shader_parameter/radius = 4000.00019
 shader_parameter/softness = 2000.000095
 shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
-[node name="game" type="Node" unique_id=939668133]
+[node name="game" type="Node" unique_id=939668133 node_paths=PackedStringArray("world", "player_component")]
 script = ExtResource("1_fc0e3")
+world = NodePath("world")
+player_component = NodePath("world/objects/Player")
 
 [node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component", "camera", "blackout_rect", "game")]
 material = SubResource("ShaderMaterial_1mt3p")

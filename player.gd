@@ -2,6 +2,8 @@ extends EntityComponent
 
 class_name Player
 
+signal death()
+
 @export
 var speed: float = 30.0
 @export
@@ -10,6 +12,11 @@ var items: ItemInventory
 var resource_inventory: ResourceInventory
 @export
 var entity_component: CharacterBody2D
+@export
+var harvestable: Harvestable
+
+func _ready() -> void:
+	harvestable.harvestable_depleted.connect(func() -> void: death.emit())
 
 func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")

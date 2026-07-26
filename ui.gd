@@ -9,6 +9,10 @@ var game: Game
 var health_label: Label
 @export
 var item_slots_container: Control
+@export
+var death_dialog: Control
+@export
+var death_dialog_button: Button
 var resource_container: PackedScene = preload("res://resource_container.tscn")
 var resource_containers: Dictionary[GameResource.ResourceType, Control] = {}
 var item_slot: PackedScene = preload("res://item_slot.tscn")
@@ -36,6 +40,9 @@ func _ready() -> void:
 		if child is Harvestable:
 			health_label.text = str(child.harvesting_health)
 			child.harvested.connect(func(new_health: int): health_label.text = str(new_health))
+	death_dialog.visible = false
+	player.death.connect(func(): death_dialog.visible = true)
+	death_dialog_button.pressed.connect(func(): game.start_game())
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)

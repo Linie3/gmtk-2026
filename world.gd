@@ -58,9 +58,10 @@ func _process(delta: float) -> void:
 	if navigation_update_scheduled:
 		navigation_region.bake_navigation_polygon()
 		navigation_update_scheduled = false
-	if last_player_position.distance_to(player_component.position) > 50:
-		player_position_changed.emit(player_component.position)
-		last_player_position = player_component.position
+	if player_component:
+		if last_player_position.distance_to(player_component.position) > 50:
+			player_position_changed.emit(player_component.position)
+			last_player_position = player_component.position
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []
