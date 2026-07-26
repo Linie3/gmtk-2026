@@ -33,4 +33,4 @@ func has_enough_resources(required_resources: Dictionary[GameResource.ResourceTy
 	return true
 
 func get_resource_amount(resource_type: GameResource.ResourceType) -> int:
-	return resources[resource_type]
+	return resources[resource_type] if resources.has(resource_type) else 0 

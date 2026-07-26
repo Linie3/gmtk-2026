@@ -22,6 +22,7 @@ func _ready() -> void:
 		var container: ResourceContainer = resource_container.instantiate()
 		resource_containers[resource_type] = container
 		container.set_resource(resource_type, 0)
+		container.content_size = 64
 		resources_container.add_child(container) 
 	player = player_component.entity_component
 	player.resource_inventory.resource_changed.connect(_on_resource_changed)
@@ -41,7 +42,7 @@ func _on_items_changed(new_items: Array[Item]) -> void:
 	item_slots.clear()
 	for item in new_items:
 		var new_item_slot: ItemSlot = item_slot.instantiate()
-		new_item_slot.set_item(item)
+		new_item_slot.set_data(item, player.resource_inventory)
 		item_slots.append(new_item_slot)
 		item_slots_container.add_child(new_item_slot)
 	var active_item_index: int = new_items.find(active_item)
