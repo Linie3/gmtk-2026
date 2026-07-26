@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://57wolga2e57c" path="res://item_slot.gd" id="1_0myub"]
 [ext_resource type="Texture2D" uid="uid://csgpp42xlsxxl" path="res://assets/items/icons/slingshot.png" id="1_n6cxc"]
 [ext_resource type="Texture2D" uid="uid://d33p5ta87kew1" path="res://assets/game_resources/stone.png" id="2_7v0y0"]
-[ext_resource type="Texture2D" uid="uid://bt8qfwh7up7at" path="res://assets/item_slot_border_selected.png" id="2_i83bl"]
+[ext_resource type="Texture2D" uid="uid://32misl6qpkw1" path="res://assets/item_slot_border_normal.png" id="2_i83bl"]
 
 [sub_resource type="Theme" id="Theme_i83bl"]
 
