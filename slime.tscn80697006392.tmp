@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ccfgbps7mdbkn" path="res://assets/slime_channeling.png" id="4_2002g"]
 [ext_resource type="Texture2D" uid="uid://cc87rir6et28j" path="res://assets/slime_attacking.png" id="4_bratd"]
 [ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="4_ppcr1"]
-[ext_resource type="PackedScene" uid="uid://crfibr2n56jko" path="res://healthbar.tscn" id="8_5b0gg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
 radius = 53.460266
@@ -19,7 +18,7 @@ animations = [{
 "texture": ExtResource("4_bratd")
 }],
 "loop": 1,
-"name": &"attack",
+"name": &"attacking",
 "speed": 5.0
 }, {
 "frames": [{
@@ -27,7 +26,7 @@ animations = [{
 "texture": ExtResource("4_2002g")
 }],
 "loop": 1,
-"name": &"channel",
+"name": &"channeling",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,12 +41,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_73o7e"]
-radius = 74.00676
-
-[node name="slime" type="CharacterBody2D" unique_id=61383222 node_paths=PackedStringArray("entity_component")]
+[node name="slime" type="CharacterBody2D" unique_id=61383222]
 script = ExtResource("1_jayke")
-entity_component = NodePath("slime")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2013128279]
 shape = SubResource("CircleShape2D_wguj5")
@@ -69,36 +64,19 @@ texture = ExtResource("2_4l1t8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1679000385]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4l1t8")
-animation = &"attack"
+animation = &"attacking"
 autoplay = "default"
 speed_scale = 0.575
 
-[node name="slime" type="Node" parent="." unique_id=1642683091 node_paths=PackedStringArray("hitbox", "entity", "navigation_agent", "animation_sprite", "channel_timer", "jump_timer")]
+[node name="slime" type="Node" parent="." unique_id=1642683091 node_paths=PackedStringArray("entity", "navigation_agent", "animation_sprite")]
 script = ExtResource("1_5jc4t")
-hitbox = NodePath("../Area2D")
 entity = NodePath("..")
 navigation_agent = NodePath("../NavigationAgent2D")
+speed = null
 animation_sprite = NodePath("../AnimatedSprite2D")
-channel_timer = NodePath("../channel")
-jump_timer = NodePath("../jump")
 
-[node name="channel" type="Timer" parent="." unique_id=301099593]
-wait_time = 0.5
+[node name="attack_timer" type="Timer" parent="." unique_id=301099593]
+wait_time = 0.3
 one_shot = true
-
-[node name="jump" type="Timer" parent="." unique_id=1957655131]
-wait_time = 0.6
-
-[node name="Area2D" type="Area2D" parent="." unique_id=247772705]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1077501439]
-shape = SubResource("CircleShape2D_73o7e")
-
-[node name="healthbar" parent="." unique_id=1696183414 node_paths=PackedStringArray("harvestable") instance=ExtResource("8_5b0gg")]
-offset_left = -32.0
-offset_top = -94.0
-offset_right = -32.0
-offset_bottom = -94.0
-harvestable = NodePath("../harvestable")
 
 [editable path="harvestable"]

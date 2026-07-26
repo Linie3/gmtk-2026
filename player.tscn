@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cr3l7x8g53tq4"]
 
+[ext_resource type="Script" uid="uid://befp0ga80vw4g" path="res://entity.gd" id="1_1jxqw"]
 [ext_resource type="Script" uid="uid://eufihikpd4ir" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cx1opinmxosre" path="res://item_inventory.gd" id="3_i3pqv"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jaofcyu2omqt" path="res://slingshot.tscn" id="5_1jxqw"]
 [ext_resource type="Script" uid="uid://c34da14yr8wel" path="res://interacter.gd" id="5_sweqy"]
 [ext_resource type="Script" uid="uid://cwffo07llm8wp" path="res://resource_inventory.gd" id="6_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="8_dw050"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
 size = Vector2(126, 128)
@@ -14,11 +16,9 @@ size = Vector2(126, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 119.0042
 
-[node name="Player" type="CharacterBody2D" unique_id=709357860 node_paths=PackedStringArray("items", "resource_inventory")]
-script = ExtResource("1_4flbx")
-speed = 500.0
-items = NodePath("item_inventory")
-resource_inventory = NodePath("resource_inventory")
+[node name="player_entity" type="CharacterBody2D" unique_id=709357860 node_paths=PackedStringArray("entity_component")]
+script = ExtResource("1_1jxqw")
+entity_component = NodePath("player")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=847434924]
 texture = ExtResource("2_onrkg")
@@ -52,3 +52,18 @@ shape = SubResource("CircleShape2D_hqtel")
 
 [node name="resource_inventory" type="Node" parent="." unique_id=1053739663]
 script = ExtResource("6_2hs0m")
+
+[node name="player" type="Node" parent="." unique_id=1181283719 node_paths=PackedStringArray("items", "resource_inventory", "entity_component")]
+script = ExtResource("1_4flbx")
+speed = 400.0
+items = NodePath("../item_inventory")
+resource_inventory = NodePath("../resource_inventory")
+entity_component = NodePath("..")
+
+[node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("8_dw050")]
+harvesting_health = 5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="harvestable/harvestable_area" parent_id_path=PackedInt32Array(316802169, 1805849655) index="0" unique_id=950687579]
+shape = SubResource("RectangleShape2D_ryrav")
+
+[editable path="harvestable"]

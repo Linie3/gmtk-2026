@@ -8,6 +8,8 @@ static func get_item_icon(item_name: StringName) -> CompressedTexture2D:
 
 signal harvest(resources: Dictionary[GameResource.ResourceType, int])
 
+var entity: Entity
+
 @export
 var item_name: StringName
 @export

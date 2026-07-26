@@ -19,15 +19,15 @@ agent_radius = 64.0
 [node name="game" type="Node" unique_id=939668133]
 script = ExtResource("1_fc0e3")
 
-[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player") instance=ExtResource("3_feb5d")]
+[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player_component") instance=ExtResource("3_feb5d")]
 game = NodePath("..")
-player = NodePath("../world/objects/Player")
+player_component = NodePath("../world/objects/Player")
 
-[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player")]
+[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component")]
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
 objects_container = NodePath("objects")
-player = NodePath("objects/Player")
+player_component = NodePath("objects/Player")
 
 [node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
 repeat_size = Vector2(64, 64)
@@ -38,7 +38,7 @@ position = Vector2(64, 64)
 texture = ExtResource("3_ryrav")
 
 [node name="Camera2D" type="Camera2D" parent="world" unique_id=870487946]
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(0.5, 0.5)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="world" unique_id=2028339851]
 position = Vector2(2, -54)

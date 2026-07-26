@@ -10,10 +10,12 @@ signal player_position_changed(new_position: Vector2)
 
 const tree: PackedScene = preload("res://tree.tscn")
 const rock: PackedScene = preload("res://rock.tscn")
-@export var navigation_region: NavigationRegion2D
+@export 	
+var navigation_region: NavigationRegion2D
 @export
 var objects_container: Node2D
 @export
+var player_component: Entity
 var player: Player
 var last_player_position: Vector2 = Vector2.ZERO
 var navigation_update_scheduled: bool = false
@@ -22,6 +24,7 @@ func _init() -> void:
 	instance = self
 
 func _ready() -> void:
+	player = player_component.entity_component
 	for position in get_random_positions(15, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
@@ -35,9 +38,9 @@ func _process(delta: float) -> void:
 	if navigation_update_scheduled:
 		navigation_region.bake_navigation_polygon()
 		navigation_update_scheduled = false
-	if last_player_position.distance_to(player.position) > 50:
-		player_position_changed.emit(player.position)
-		last_player_position = player.position
+	if last_player_position.distance_to(player_component.position) > 50:
+		player_position_changed.emit(player_component.position)
+		last_player_position = player_component.position
 
 func get_random_positions(amount: int, area: Rect2) -> Array[Vector2]:
 	var positions: Array[Vector2] = []

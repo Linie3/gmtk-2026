@@ -36,6 +36,7 @@ func start_item_cooldown() -> void:
 	item_cooldown.start()
 
 func add_item(item: Item) -> void:
+	item.entity = get_parent()
 	items.append(item)
 	items_changed.emit(items)
 	if (!active_item):

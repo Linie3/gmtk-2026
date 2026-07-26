@@ -2,8 +2,10 @@ extends CanvasLayer
 
 @export var game: Game
 @export var timer: Label
-@export var player: Player
+@export var player_component: Entity
 @export var resources_container: Control
+@export
+var health_label: Label
 @export
 var item_slots_container: Control
 var resource_container: PackedScene = preload("res://resource_container.tscn")
@@ -12,6 +14,7 @@ var item_slot: PackedScene = preload("res://item_slot.tscn")
 var item_slots: Array[ItemSlot] = []
 var items: Array[Item]
 var active_item: Item
+var player: Player
 
 func _ready() -> void:
 	game.timer_updated.connect(_on_timer_updated)
@@ -20,9 +23,14 @@ func _ready() -> void:
 		resource_containers[resource_type] = container
 		container.set_resource(resource_type, 0)
 		resources_container.add_child(container) 
+	player = player_component.entity_component
 	player.resource_inventory.resource_changed.connect(_on_resource_changed)
 	player.items.items_changed.connect(_on_items_changed)
 	player.items.active_item_changed.connect(_on_active_item_changed)
+	for child in player_component.get_children():
+		if child is Harvestable:
+			health_label.text = str(child.harvesting_health)
+			child.harvested.connect(func(new_health: int): health_label.text = str(new_health))
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)
@@ -54,4 +62,4 @@ func _on_timer_updated(new_timer: int) -> void:
 	var total_seconds: float = new_timer / 1000.0
 	var minutes: int = int(total_seconds) / 60
 	var seconds: float = fmod(total_seconds, 60.0)
-	timer.text = "Time: %02d:%04.1f" % [minutes, seconds]
+	timer.text = "%02d:%04.1f" % [minutes, seconds]

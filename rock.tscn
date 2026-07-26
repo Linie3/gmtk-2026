@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://be7vuhiuyomfp"]
 
-[ext_resource type="Script" uid="uid://boat8s30cgc0n" path="res://tree.gd" id="1_46y1q"]
 [ext_resource type="Texture2D" uid="uid://drdko68qysbsm" path="res://assets/rock.png" id="2_46y1q"]
 [ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="3_gtey5"]
 [ext_resource type="PackedScene" uid="uid://bljcf7p8p5rn7" path="res://game_collision.tscn" id="4_nnrwk"]
@@ -9,9 +8,7 @@
 radius = 39.0
 height = 114.0
 
-[node name="rock" type="Node2D" unique_id=166922364 node_paths=PackedStringArray("harvestable")]
-script = ExtResource("1_46y1q")
-harvestable = NodePath("harvestable")
+[node name="rock" type="Node2D" unique_id=166922364]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187635715]
 position = Vector2(0, -6)
@@ -21,7 +18,7 @@ texture = ExtResource("2_46y1q")
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("3_gtey5")]
 harvesting_health = 5
 harvestation_results = Dictionary[int, int]({
-1: 1
+1: 5
 })
 
 [node name="harvestable_area" parent="harvestable" index="0" unique_id=1805849655]
