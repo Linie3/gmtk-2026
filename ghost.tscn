@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ca226f07tmb04"]
+
+[ext_resource type="Script" uid="uid://b6h6ooh5nbawr" path="res://character_body_2d.gd" id="1_xtt71"]
+[ext_resource type="Texture2D" uid="uid://cfm6m2gyx08bp" path="res://assets/spirit.png" id="2_kjq22"]
+[ext_resource type="Script" uid="uid://c01c2aw0w2jsl" path="res://spririt_component.gd" id="3_hiw70"]
+[ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://harvestable.tscn" id="4_jw18l"]
+[ext_resource type="PackedScene" uid="uid://crfibr2n56jko" path="res://healthbar.tscn" id="5_kjq22"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73o7e"]
+radius = 50.01
+
+[node name="CharacterBody2D" type="Node2D" unique_id=418067112 node_paths=PackedStringArray("entity_component")]
+script = ExtResource("1_xtt71")
+entity_component = NodePath("spririt_component")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=315855909]
+scale = Vector2(4, 4)
+texture = ExtResource("2_kjq22")
+
+[node name="spririt_component" type="Node" parent="." unique_id=2011618995 node_paths=PackedStringArray("hitbox", "entity", "animation_sprite")]
+script = ExtResource("3_hiw70")
+hitbox = NodePath("../Area2D")
+entity = NodePath("..")
+animation_sprite = NodePath("../Sprite2D")
+acceleration = 350.0
+max_speed = 650.0
+
+[node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("4_jw18l")]
+harvesting_health = 3
+
+[node name="harvestable_area" parent="harvestable" index="0" unique_id=1805849655]
+collision_mask = 3
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="harvestable/harvestable_area" index="0" unique_id=1826774486]
+shape = SubResource("CircleShape2D_73o7e")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=242908406]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1441821425]
+shape = SubResource("CircleShape2D_73o7e")
+
+[node name="healthbar" parent="." unique_id=1696183414 node_paths=PackedStringArray("harvestable") instance=ExtResource("5_kjq22")]
+offset_left = -32.36
+offset_top = -98.85
+offset_right = -32.36
+offset_bottom = -98.85
+harvestable = NodePath("../harvestable")
+
+[editable path="harvestable"]

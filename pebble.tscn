@@ -2,20 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cbtcblqwg63ku" path="res://pebble.gd" id="1_gfylr"]
 [ext_resource type="Texture2D" uid="uid://bnuxtce0la4b3" path="res://assets/items/pebble.png" id="2_4t2er"]
+[ext_resource type="PackedScene" uid="uid://ba5up4ur3wijb" path="res://harvester.tscn" id="3_4t2er"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
-radius = 7.071068
+[sub_resource type="CircleShape2D" id="CircleShape2D_73o7e"]
+radius = 7.0
 
 [node name="pebble" type="Node2D" unique_id=542981856 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_gfylr")
-hitbox = NodePath("Area2D")
+hitbox = NodePath("harvester")
 speed = 1500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1541333077]
 scale = Vector2(2, 2)
 texture = ExtResource("2_4t2er")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=146355651]
+[node name="harvester" parent="." unique_id=1003190747 instance=ExtResource("3_4t2er")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=927868118]
-shape = SubResource("CircleShape2D_wguj5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="harvester/harvest_area" parent_id_path=PackedInt32Array(1003190747, 1453486384) index="0" unique_id=1204771341]
+shape = SubResource("CircleShape2D_73o7e")
+
+[editable path="harvester"]

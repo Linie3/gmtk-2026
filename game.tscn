@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_7jktm"]
 [ext_resource type="PackedScene" uid="uid://cl3f7itfl685q" path="res://slime.tscn" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://ca226f07tmb04" path="res://ghost.tscn" id="8_vef74"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mt3p"]
 shader = ExtResource("3_j5wjh")
@@ -75,6 +76,9 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="slime" parent="world/objects" unique_id=61383222 instance=ExtResource("7_eow3j")]
 position = Vector2(-1452, 1585)
+
+[node name="CharacterBody2D" parent="world/objects" unique_id=418067112 instance=ExtResource("8_vef74")]
+position = Vector2(1268, -688)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="world" unique_id=783072149]
 
