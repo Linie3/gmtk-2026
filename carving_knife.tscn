@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://crn48b5vh4i7l"]
+
+[ext_resource type="Script" uid="uid://bagx26iq1o2da" path="res://carving_knife.gd" id="1_vc06a"]
+
+[node name="carving_knife" type="Node2D" unique_id=1222330914]
+script = ExtResource("1_vc06a")
+splinter_count = 4
+item_name = &"carving_knife"
+cooldown = 1.5
+usage_cost = Dictionary[int, int]({
+0: 2
+})

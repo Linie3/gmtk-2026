@@ -16,14 +16,31 @@ var navigation_region: NavigationRegion2D
 var objects_container: Node2D
 @export
 var player_component: Entity
+@export
+var camera: Camera2D
+@export
+var blackout_rect: ColorRect
+@export
+var game: Game
+@export
+var blackout_max_radius: float
+@export
+var blackout_min_radius: float
 var player: Player
 var last_player_position: Vector2 = Vector2.ZERO
 var navigation_update_scheduled: bool = false
+var blackout_radius: float:
+	set(value):
+		blackout_rect.material.set_shader_parameter("radius", value)
+		blackout_radius = value
+var radius_tween: Tween
 
 func _init() -> void:
 	instance = self
 
 func _ready() -> void:
+	blackout_radius = blackout_max_radius
+	game.countdown_state_changed.connect(_on_countdown_state_changed)
 	player = player_component.entity_component
 	for position in get_random_positions(15, Rect2(Vector2(-1000, -1000), Vector2(2000, 2000))):
 		var new_tree : Node2D = tree.instantiate()
@@ -35,6 +52,9 @@ func _ready() -> void:
 		_add_object(new_rock)
 
 func _process(delta: float) -> void:
+	blackout_rect.material.set_shader_parameter("blackout_position", Vector2(0, 0))
+	var inv_transform: Transform2D = get_viewport().get_canvas_transform().affine_inverse()
+	blackout_rect.material.set_shader_parameter("global_transform_inv", Transform3D(inv_transform))
 	if navigation_update_scheduled:
 		navigation_region.bake_navigation_polygon()
 		navigation_update_scheduled = false
@@ -61,3 +81,20 @@ func _add_object(object: Node2D) -> void:
 
 func schedule_navigation_update() -> void:
 	navigation_update_scheduled = true
+
+func _on_countdown_state_changed(new_state: Game.CountdownState) -> void:
+	if radius_tween and radius_tween.is_running():
+		radius_tween.kill()
+	match new_state:
+		Game.CountdownState.COUNTDOWN:
+			blackout_rect.material.set_shader_parameter("blackout_enabled", true)
+			radius_tween = get_tree().create_tween()
+			radius_tween.tween_property(self, "blackout_radius", blackout_min_radius, 3.0)
+			radius_tween.finished.connect(_on_radius_tween_finished)
+		Game.CountdownState.COUNTUP:
+			radius_tween = get_tree().create_tween()
+			radius_tween.tween_property(self, "blackout_radius", blackout_max_radius, 3.0)
+
+func _on_radius_tween_finished() -> void:
+	if game.countdown_state == Game.CountdownState.COUNTUP:
+		blackout_rect.material.set_shader_parameter("blackout_enabled", false)

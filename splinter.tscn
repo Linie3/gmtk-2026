@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cml8iaj70a0ns"]
+
+[ext_resource type="Script" uid="uid://dmq33cqxoohp" path="res://splinter.gd" id="1_qfmf1"]
+[ext_resource type="Texture2D" uid="uid://damu4hu46ipju" path="res://assets/items/splinter.png" id="2_lh73n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2ssm"]
+radius = 12.0
+
+[node name="splinter" type="Node2D" unique_id=1094673119 node_paths=PackedStringArray("hitbox", "lifetimer")]
+script = ExtResource("1_qfmf1")
+hitbox = NodePath("Area2D")
+speed = 1000.0
+lifetimer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=793200979]
+scale = Vector2(2, 2)
+texture = ExtResource("2_lh73n")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1985224303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=233346044]
+shape = SubResource("CircleShape2D_f2ssm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1448484074]
+wait_time = 0.6
+one_shot = true
+autostart = true

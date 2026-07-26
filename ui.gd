@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@export var game: Game
+@export
+var game: Game
 @export var timer: Label
 @export var player_component: Entity
 @export var resources_container: Control
@@ -17,7 +18,8 @@ var active_item: Item
 var player: Player
 
 func _ready() -> void:
-	game.timer_updated.connect(_on_timer_updated)
+	game.countdown_updated.connect(_on_timer_updated)
+	game.countdown_state_changed.connect(_on_countdown_state_changed)
 	for resource_type in GameResource.get_resource_types():
 		var container: ResourceContainer = resource_container.instantiate()
 		resource_containers[resource_type] = container
@@ -27,6 +29,8 @@ func _ready() -> void:
 	player = player_component.entity_component
 	player.resource_inventory.resource_changed.connect(_on_resource_changed)
 	player.items.items_changed.connect(_on_items_changed)
+	_on_items_changed( player.items.items)
+	_on_active_item_changed(player.items.active_item)
 	player.items.active_item_changed.connect(_on_active_item_changed)
 	for child in player_component.get_children():
 		if child is Harvestable:
@@ -64,3 +68,10 @@ func _on_timer_updated(new_timer: int) -> void:
 	var minutes: int = int(total_seconds) / 60
 	var seconds: float = fmod(total_seconds, 60.0)
 	timer.text = "%02d:%04.1f" % [minutes, seconds]
+
+func _on_countdown_state_changed(new_state: Game.CountdownState) -> void:
+	match new_state:
+		Game.CountdownState.COUNTDOWN:
+			timer.add_theme_color_override(&"font_color", Color(1.0, 0, 0))
+		Game.CountdownState.COUNTUP:
+			timer.remove_theme_color_override(&"font_color")			

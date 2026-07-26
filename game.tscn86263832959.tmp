@@ -4,18 +4,9 @@
 [ext_resource type="Script" uid="uid://beobasoccyje2" path="res://world.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c6y2jwkyny2k6" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://crndvdes2y8d7" path="res://ui.tscn" id="3_feb5d"]
-[ext_resource type="Shader" uid="uid://cqshiixd3xjvd" path="res://world.gdshader" id="3_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://time_machine.tscn" id="4_7jktm"]
 [ext_resource type="PackedScene" uid="uid://cl3f7itfl685q" path="res://slime.tscn" id="7_eow3j"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mt3p"]
-shader = ExtResource("3_j5wjh")
-shader_parameter/blackout_position = Vector2(0, 0)
-shader_parameter/blackout_enabled = false
-shader_parameter/radius = 200.0
-shader_parameter/softness = 80.0
-shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7jktm"]
 vertices = PackedVector2Array(986.8281, 642.6797, -2004.8906, 2119.1328, -1000.3828, -661.39844, 909.8125, -695.46094)
@@ -25,28 +16,18 @@ parsed_collision_mask = 4294967041
 source_geometry_mode = 1
 agent_radius = 64.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wguj5"]
-shader = ExtResource("3_j5wjh")
-shader_parameter/blackout_position = Vector2(0, 0)
-shader_parameter/blackout_enabled = false
-shader_parameter/radius = 4000.00019
-shader_parameter/softness = 2000.000095
-shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-
 [node name="game" type="Node" unique_id=939668133]
 script = ExtResource("1_fc0e3")
 
-[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component", "camera", "blackout_rect", "game")]
-material = SubResource("ShaderMaterial_1mt3p")
+[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player_component") instance=ExtResource("3_feb5d")]
+game = NodePath("..")
+player_component = NodePath("../world/objects/Player")
+
+[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "objects_container", "player_component")]
 script = ExtResource("1_e2o6t")
 navigation_region = NodePath("NavigationRegion2D")
 objects_container = NodePath("objects")
 player_component = NodePath("objects/Player")
-camera = NodePath("Camera2D")
-blackout_rect = NodePath("CanvasLayer/ColorRect")
-game = NodePath("..")
-blackout_max_radius = 3250.0
-blackout_min_radius = 1500.0
 
 [node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
 repeat_size = Vector2(64, 64)
@@ -75,18 +56,3 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="slime" parent="world/objects" unique_id=61383222 instance=ExtResource("7_eow3j")]
 position = Vector2(-1452, 1585)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="world" unique_id=783072149]
-
-[node name="ColorRect" type="ColorRect" parent="world/CanvasLayer" unique_id=1012945947]
-material = SubResource("ShaderMaterial_wguj5")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player_component") instance=ExtResource("3_feb5d")]
-layer = 2
-game = NodePath("..")
-player_component = NodePath("../world/objects/Player")

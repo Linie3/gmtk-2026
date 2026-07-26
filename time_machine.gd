@@ -12,17 +12,24 @@ func _ready() -> void:
 	popup.visible = false
 	interactable.interacter_entered_range.connect(_on_interacter_entered_range)
 	interactable.interacter_left_range.connect(_on_interacter_left_range)
+	Game.instance.countdown_state_changed.connect(func(_state: Game.CountdownState): _update_popup_state())
 
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("interact") && player_in_range):
-		Game.start_wave()
+	if (Input.is_action_just_pressed("interact") && can_activate()):
+		Game.instance.change_countdown_state(Game.CountdownState.COUNTDOWN)
 
 func _on_interacter_entered_range(interacter: Interacter) -> void:
 	if (interacter.get_parent() is Entity && interacter.get_parent().entity_component is Player):
 		player_in_range = true
-		popup.visible = true
+		_update_popup_state()
 
 func _on_interacter_left_range(interacter: Interacter) -> void:
 	if (interacter.get_parent() is Entity && interacter.get_parent().entity_component is Player):
 		player_in_range = false
-		popup.visible = false
+		_update_popup_state()
+
+func _update_popup_state() -> void:
+	popup.visible = can_activate()
+
+func can_activate() -> bool:
+	return player_in_range and Game.instance.countdown_state == Game.CountdownState.COUNTUP
