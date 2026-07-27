@@ -26,13 +26,14 @@ texture = ExtResource("2_dw050")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1995391119]
 shape = SubResource("RectangleShape2D_ryrav")
 
-[node name="item_inventory" type="Node2D" parent="." unique_id=233860 node_paths=PackedStringArray("item_cooldown", "items_container", "resource_inventory")]
+[node name="item_inventory" type="Node2D" parent="." unique_id=233860 node_paths=PackedStringArray("item_switch_cooldown", "items_container", "resource_inventory")]
 script = ExtResource("3_i3pqv")
-item_cooldown = NodePath("item_cooldown")
+item_switch_cooldown = NodePath("item_switch_cooldown")
 items_container = NodePath("items")
 resource_inventory = NodePath("../resource_inventory")
 
-[node name="item_cooldown" type="Timer" parent="item_inventory" unique_id=1677054792]
+[node name="item_switch_cooldown" type="Timer" parent="item_inventory" unique_id=1677054792]
+wait_time = 0.3
 one_shot = true
 
 [node name="items" type="Node2D" parent="item_inventory" unique_id=1131518324]
