@@ -27,9 +27,14 @@ func _process(_delta: float) -> void:
 	if (active_item_movement != 0):
 		var current_item_index: int = items.find(active_item)
 		var new_item_index: int = clamp(current_item_index + active_item_movement, 0, items.size() - 1)
-		if current_item_index == new_item_index:
-			return
 		_set_active_item(items[new_item_index])
+	for i in range(9):
+		if (
+			!Input.is_action_just_pressed("item_slot_" + str(i + 1)) or
+			items.size() <= i
+		):
+			continue
+		_set_active_item(items[i])		
 
 func add_item(item: Item) -> void:
 	add_child(item)

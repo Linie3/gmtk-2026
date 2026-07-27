@@ -68,9 +68,10 @@ func _on_items_changed(new_items: Array[Item]) -> void:
 	for child in item_slots_container.get_children():
 		item_slots_container.remove_child(child)
 	item_slots.clear()
-	for item in new_items:
+	for i in range(new_items.size()):
+		var item: Item = new_items[i]
 		var new_item_slot: ItemSlot = item_slot.instantiate()
-		new_item_slot.set_data(item, player.resource_inventory)
+		new_item_slot.set_data(item, player.resource_inventory, i)
 		item_slots.append(new_item_slot)
 		item_slots_container.add_child(new_item_slot)
 	var active_item_index: int = new_items.find(active_item)

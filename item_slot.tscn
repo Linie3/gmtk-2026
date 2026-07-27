@@ -7,7 +7,7 @@
 
 [sub_resource type="Theme" id="Theme_i83bl"]
 
-[node name="item_slot" type="VBoxContainer" unique_id=2020658813 node_paths=PackedStringArray("icon", "border", "costs_container")]
+[node name="item_slot" type="VBoxContainer" unique_id=2020658813 node_paths=PackedStringArray("icon", "border", "costs_container", "slot_index_label")]
 offset_right = 96.0
 offset_bottom = 132.0
 size_flags_vertical = 8
@@ -15,6 +15,7 @@ script = ExtResource("1_0myub")
 icon = NodePath("icon/icon")
 border = NodePath("icon/border")
 costs_container = NodePath("cost_container/HBoxContainer")
+slot_index_label = NodePath("icon/MarginContainer/slot_index")
 
 [node name="cost_container" type="VBoxContainer" parent="." unique_id=216189902]
 layout_mode = 2
@@ -43,3 +44,17 @@ texture = ExtResource("2_i83bl")
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("1_n6cxc")
+
+[node name="MarginContainer" type="MarginContainer" parent="icon" unique_id=18284287]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 5
+
+[node name="slot_index" type="Label" parent="icon/MarginContainer" unique_id=440619496]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "1"
