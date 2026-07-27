@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://caswrd3wu1hc" path="res://ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://b10xbdmdm5qwa" path="res://assets/clock.png" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://b2cwc1rnfxkpd" path="res://assets/health.png" id="2_m6e0p"]
+[ext_resource type="Script" uid="uid://dnjw5xq3cdttl" path="res://dev_tools.gd" id="4_nltto"]
+[ext_resource type="Theme" uid="uid://ebpdlq8sffi3" path="res://spinbar_override.tres" id="5_ibotj"]
+[ext_resource type="Theme" uid="uid://cynwa85mtqjgh" path="res://devtools_section_margin_container.tres" id="5_n5ude"]
 
 [node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer", "resources_container", "health_label", "item_slots_container", "death_dialog", "death_dialog_button", "instructions_dialog", "instructions_confirm_button", "stage_label")]
 script = ExtResource("1_fyqef")
@@ -12,8 +15,8 @@ health_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Label")
 item_slots_container = NodePath("MarginContainer3/HBoxContainer")
 death_dialog = NodePath("death_dialog")
 death_dialog_button = NodePath("death_dialog/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button")
-instructions_dialog = NodePath("CenterContainer")
-instructions_confirm_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button")
+instructions_dialog = NodePath("game_instructions")
+instructions_confirm_button = NodePath("game_instructions/PanelContainer/MarginContainer/VBoxContainer/Button")
 stage_label = NodePath("MarginContainer/VBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=268380869]
@@ -131,50 +134,404 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Play again"
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=61479576]
+[node name="game_instructions" type="CenterContainer" parent="." unique_id=61479576]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1832467250]
+[node name="PanelContainer" type="PanelContainer" parent="game_instructions" unique_id=1832467250]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1905027933]
+[node name="MarginContainer" type="MarginContainer" parent="game_instructions/PanelContainer" unique_id=1905027933]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1508147421]
+[node name="VBoxContainer" type="VBoxContainer" parent="game_instructions/PanelContainer/MarginContainer" unique_id=1508147421]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=776276175]
+[node name="Label" type="Label" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=776276175]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Game Instructions"
 
-[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=344628424]
+[node name="Label2" type="Label" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=344628424]
 layout_mode = 2
 text = "1. Run around and gather resources with your axe by Left-clicking."
 
-[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1718297118]
+[node name="Label3" type="Label" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=1718297118]
 layout_mode = 2
 text = "2. Repair the weapons you find to kill enemies."
 
-[node name="Label4" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=888647860]
+[node name="Label4" type="Label" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=888647860]
 layout_mode = 2
 text = "3. Repair the time machine, a long wave of enemies will come.
 Beware: The longer you scavenge, the more enemies will come!"
 
-[node name="Label5" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1636139353]
+[node name="Label5" type="Label" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=1636139353]
 layout_mode = 2
 text = "4. Survive!"
 
-[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=115701749]
+[node name="Button" type="Button" parent="game_instructions/PanelContainer/MarginContainer/VBoxContainer" unique_id=115701749]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Got it!"
+
+[node name="dev_tools" type="CenterContainer" parent="." unique_id=1986363726 node_paths=PackedStringArray("ui", "pause_game_button", "advance_stage_button", "advance_stage_button_step", "trigger_showdown", "set_timer_button", "set_timer_minutes", "set_timer_seconds")]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_right = 30.5
+offset_bottom = 83.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 1
+script = ExtResource("4_nltto")
+ui = NodePath("..")
+pause_game_button = NodePath("")
+advance_stage_button = NodePath("")
+advance_stage_button_step = NodePath("")
+trigger_showdown = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/showdown")
+set_timer_button = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/set_timer")
+set_timer_minutes = NodePath("")
+set_timer_seconds = NodePath("")
+
+[node name="PanelContainer" type="PanelContainer" parent="dev_tools" unique_id=227815153]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="dev_tools/PanelContainer" unique_id=1382476969]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer" unique_id=118223121]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2" unique_id=1383097790]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer" unique_id=23559021]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Game"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer" unique_id=863071709]
+layout_mode = 2
+theme = ExtResource("5_n5ude")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer" unique_id=825217557]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=217835188]
+layout_mode = 2
+
+[node name="set_timer" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1527538798]
+layout_mode = 2
+text = "Timer"
+
+[node name="set_timer_minutes" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1917600458]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_ibotj")
+suffix = "m"
+
+[node name="set_timer_seconds" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2126346230]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_ibotj")
+suffix = "s"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=328314479]
+layout_mode = 2
+
+[node name="stage_button" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=940758291]
+layout_mode = 2
+text = "Stage"
+
+[node name="stage_mode" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1852762557]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Advance"
+popup/item_0/id = 0
+popup/item_1/text = "Set"
+popup/item_1/id = 1
+
+[node name="stage_step" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1422479985]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_ibotj")
+value = 1.0
+rounded = true
+allow_greater = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=464423311]
+layout_mode = 2
+
+[node name="showdown" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1450486371]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Showdown"
+
+[node name="pause" type="CheckButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1035533800]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Pause"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1080561402]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1061492182]
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "Music"
+popup/item_0/id = 0
+
+[node name="OptionButton2" type="CheckButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=743873588]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1790701920]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 20.0
+step = 0.1
+
+[node name="Label2" type="Label" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=450789663]
+layout_mode = 2
+text = "0"
+
+[node name="Label" type="Label" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1525852138]
+layout_mode = 2
+text = "dB"
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2" unique_id=2144445753]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=450682796]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Player"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=1772477740]
+layout_mode = 2
+theme = ExtResource("5_n5ude")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer" unique_id=1519441803]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer" unique_id=1581217427]
+layout_mode = 2
+
+[node name="invulnerable" type="CheckButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=282225548]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Invulnerable"
+
+[node name="kill" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1759934335]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kill"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer" unique_id=287886259]
+layout_mode = 2
+
+[node name="health" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1804900956]
+layout_mode = 2
+text = "Health"
+
+[node name="health_mode" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=304025112]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Set"
+popup/item_0/id = 0
+popup/item_1/text = "Give"
+popup/item_1/id = 1
+popup/item_2/text = "Take"
+popup/item_2/id = 2
+
+[node name="health_amount" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=651909951]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_ibotj")
+value = 1.0
+allow_greater = true
+
+[node name="Label2" type="RichTextLabel" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=286589316]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Enemies"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=2128856060]
+layout_mode = 2
+theme = ExtResource("5_n5ude")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2" unique_id=144762652]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer" unique_id=1094089217]
+layout_mode = 2
+
+[node name="clear_enemies" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1801371740]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="peaceful" type="CheckButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=582042666]
+layout_mode = 2
+text = "Peaceful"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer" unique_id=387208483]
+layout_mode = 2
+
+[node name="enemy_spawn" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1862844147]
+layout_mode = 2
+text = "Spawn"
+
+[node name="enemy_type" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1553093390]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/id = 0
+
+[node name="enemy_amount" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=140439845]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("5_ibotj")
+min_value = 1.0
+value = 1.0
+rounded = true
+allow_greater = true
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2" unique_id=1905218730]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=817785145]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Resources"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=119025064]
+layout_mode = 2
+theme = ExtResource("5_n5ude")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer" unique_id=1988599081]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer" unique_id=466066715]
+layout_mode = 2
+
+[node name="resources_fill" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=386215448]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fill"
+
+[node name="resources_clear" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2118941950]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer" unique_id=784429031]
+layout_mode = 2
+
+[node name="resource_mode" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1037110971]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Give"
+popup/item_0/id = 0
+popup/item_1/text = "Take"
+popup/item_1/id = 1
+popup/item_2/text = "Set"
+popup/item_2/id = 2
+
+[node name="resource_type" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1052540952]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/id = 0
+
+[node name="resource_amount" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1896717812]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("5_ibotj")
+
+[node name="Label2" type="RichTextLabel" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1558694910]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Items"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1079533163]
+layout_mode = 2
+theme = ExtResource("5_n5ude")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2" unique_id=180704175]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer" unique_id=1153160101]
+layout_mode = 2
+
+[node name="items_fill" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=7332841]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fill"
+
+[node name="items_clear" type="Button" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=184150605]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer" unique_id=704786618]
+layout_mode = 2
+
+[node name="item_mode" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=70107128]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Give"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+
+[node name="item_type" type="OptionButton" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=435684163]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/id = 0
+
+[node name="item_slot" type="SpinBox" parent="dev_tools/PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1021181271]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("5_ibotj")
+max_value = 9.0
+rounded = true

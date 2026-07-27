@@ -54,7 +54,7 @@ func _ready() -> void:
 	game.countdown_state_changed.connect(_on_countdown_state_changed)
 	player = player_component.entity_component
 	enemy_timer.timeout.connect(spawn_enemy)
-	game.next_stage.connect(generate_new_world)
+	game.next_stage_started.connect(generate_new_world)
 
 func _process(delta: float) -> void:
 	blackout_rect.material.set_shader_parameter("blackout_position", Vector2(0, 0))

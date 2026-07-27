@@ -9,7 +9,7 @@ enum CountdownState {
 
 signal countdown_updated(new_timer: int)
 signal countdown_state_changed(countdown_state: CountdownState)
-signal next_stage(stage: int)
+signal next_stage_started(stage: int)
 
 static var instance: Game = null
 
@@ -43,7 +43,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	player_component.entity_component.death.connect(_on_player_death)
-	next_stage.emit(stage)
+	next_stage_started.emit(stage)
 	change_countdown_state(CountdownState.COUNTUP)
 
 func _physics_process(delta: float) -> void:
@@ -54,12 +54,15 @@ func _physics_process(delta: float) -> void:
 			trigger_showdown()
 	else:
 		timer -= max(0, floor(delta * 1000))
-		countdown_updated.emit(timer)		
+		countdown_updated.emit(timer)
 		if (timer <= 0):
-			stage += 1
-			difficulty_factor = (0.6 + float(stage) * 0.4)
-			next_stage.emit(stage)
-			change_countdown_state(CountdownState.COUNTUP)
+			advance_stage(1)
+
+func advance_stage(amount: int) -> void:
+	stage += amount
+	difficulty_factor = (0.6 + float(stage) * 0.4)
+	next_stage_started.emit(stage)
+	change_countdown_state(CountdownState.COUNTUP)
 
 func trigger_showdown() -> void:
 	change_countdown_state(CountdownState.COUNTDOWN)

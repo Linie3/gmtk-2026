@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name UI
+
 @export
 var game: Game
 @export var timer: Label
@@ -59,7 +61,7 @@ func _ready() -> void:
 		Engine.time_scale = 0.0
 	else:
 		instructions_dialog.visible = false
-	game.next_stage.connect(func(stage: int): stage_label.text = "Stage " + str(stage))
+	game.next_stage_started.connect(func(stage: int): stage_label.text = "Stage " + str(stage))
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)
