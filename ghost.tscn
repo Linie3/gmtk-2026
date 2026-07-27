@@ -22,8 +22,8 @@ script = ExtResource("3_hiw70")
 hitbox = NodePath("../Area2D")
 entity = NodePath("..")
 animation_sprite = NodePath("../Sprite2D")
-acceleration = 350.0
-max_speed = 650.0
+acceleration = 250.0
+max_speed = 550.0
 
 [node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("4_jw18l")]
 harvesting_health = 3

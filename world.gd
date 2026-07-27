@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 	var inv_transform: Transform2D = get_viewport().get_canvas_transform().affine_inverse()
 	blackout_rect.material.set_shader_parameter("global_transform_inv", Transform3D(inv_transform))
 	if navigation_update_scheduled:
-		navigation_region.bake_navigation_polygon()
+		navigation_region.bake_navigation_polygon(true)
 		navigation_update_scheduled = false
 	if player_component:
 		if last_player_position.distance_to(player_component.position) > 50:
@@ -71,11 +71,11 @@ func _process(delta: float) -> void:
 func generate_new_world(stage: int) -> void:
 	for child in objects_container.get_children():
 		child.queue_free()
-	for position in get_random_positions(200, Rect2(Vector2(-4000, -4000), Vector2(8000, 8000))):
+	for position in get_random_positions(100, Rect2(Vector2(-3000, -3000), Vector2(6000, 6000))):
 		var new_tree : Node2D = tree.instantiate()
 		new_tree.position = position
 		_add_object(new_tree)
-	for position in get_random_positions(120, Rect2(Vector2(-4000, -4000), Vector2(8000, 8000))):
+	for position in get_random_positions(60, Rect2(Vector2(-3000, -3000), Vector2(6000, 6000))):
 		var new_rock : Node2D = rock.instantiate()
 		new_rock.position = position
 		_add_object(new_rock)	

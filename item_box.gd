@@ -12,6 +12,8 @@ var interactable: Interactable
 var cost_container: Control
 @export
 var interaction_button: Control
+@export
+var item_name_label: RichTextLabel
 var resource_container_scene: PackedScene = preload("res://resource_container.tscn")
 var player_resource_inventory: ResourceInventory
 var resource_containers: Dictionary[GameResource.ResourceType, ResourceContainer] = {}
@@ -36,6 +38,7 @@ func set_item(new_item: Item) -> void:
 	for resource_type in item.repair_cost:
 		item.repair_cost[resource_type] = round(item.repair_cost[resource_type] * Game.instance.difficulty_factor)
 	sprite.texture = Item.get_item_icon(item.item_name)
+	item_name_label.text = "[b]" + item.item_name.to_pascal_case() + "[/b]"
 	for resource_type in item.repair_cost:
 		var container: ResourceContainer = resource_container_scene.instantiate()
 		container.set_resource(resource_type, item.repair_cost[resource_type])

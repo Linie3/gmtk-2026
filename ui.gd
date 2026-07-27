@@ -17,6 +17,8 @@ var death_dialog_button: Button
 var instructions_dialog: Control
 @export
 var instructions_confirm_button: Button
+@export
+var stage_label: Label
 var resource_container: PackedScene = preload("res://resource_container.tscn")
 var resource_containers: Dictionary[GameResource.ResourceType, Control] = {}
 var item_slot: PackedScene = preload("res://item_slot.tscn")
@@ -57,6 +59,7 @@ func _ready() -> void:
 		Engine.time_scale = 0.0
 	else:
 		instructions_dialog.visible = false
+	game.next_stage.connect(func(stage: int): stage_label.text = "Stage " + str(stage))
 
 func _on_resource_changed(resource_type: GameResource.ResourceType, amount: int) -> void:
 	resource_containers[resource_type].set_resource(resource_type, amount)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b10xbdmdm5qwa" path="res://assets/clock.png" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://b2cwc1rnfxkpd" path="res://assets/health.png" id="2_m6e0p"]
 
-[node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer", "resources_container", "health_label", "item_slots_container", "death_dialog", "death_dialog_button", "instructions_dialog", "instructions_confirm_button")]
+[node name="ui" type="CanvasLayer" unique_id=2036145706 node_paths=PackedStringArray("timer", "resources_container", "health_label", "item_slots_container", "death_dialog", "death_dialog_button", "instructions_dialog", "instructions_confirm_button", "stage_label")]
 script = ExtResource("1_fyqef")
 timer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
 resources_container = NodePath("MarginContainer2/resources_container")
@@ -14,6 +14,7 @@ death_dialog = NodePath("death_dialog")
 death_dialog_button = NodePath("death_dialog/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button")
 instructions_dialog = NodePath("CenterContainer")
 instructions_confirm_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button")
+stage_label = NodePath("MarginContainer/VBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=268380869]
 offset_right = 107.0
@@ -51,6 +52,11 @@ texture = ExtResource("2_m6e0p")
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "0"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=538750109]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Stage 1"
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1957480883]
 anchors_preset = 1

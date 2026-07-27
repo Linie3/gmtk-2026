@@ -7,13 +7,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wguj5"]
 radius = 44.0
 
-[node name="item_box" type="Node2D" unique_id=1235483520 node_paths=PackedStringArray("sprite", "resources_container", "interactable", "cost_container", "interaction_button")]
+[node name="item_box" type="Node2D" unique_id=1235483520 node_paths=PackedStringArray("sprite", "resources_container", "interactable", "cost_container", "interaction_button", "item_name_label")]
 script = ExtResource("1_kmrrg")
 sprite = NodePath("Sprite2D")
 resources_container = NodePath("PanelContainer/MarginContainer/Control/resource_containers")
 interactable = NodePath("interactable")
 cost_container = NodePath("PanelContainer")
 interaction_button = NodePath("PanelContainer/MarginContainer/Control/Button")
+item_name_label = NodePath("PanelContainer/MarginContainer/Control/item_name")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641014773]
 scale = Vector2(3, 3)
@@ -41,9 +42,15 @@ theme_override_constants/margin_bottom = 10
 [node name="Control" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1744356908]
 layout_mode = 2
 
+[node name="item_name" type="RichTextLabel" parent="PanelContainer/MarginContainer/Control" unique_id=156481713]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]text[/b]"
+fit_content = true
+
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Control" unique_id=1589238083]
 layout_mode = 2
-text = "Repair cost"
+text = "Repair cost:"
 
 [node name="resource_containers" type="VBoxContainer" parent="PanelContainer/MarginContainer/Control" unique_id=2123439522]
 layout_mode = 2
