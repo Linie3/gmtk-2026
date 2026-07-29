@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://denfg7a5k7ovc"]
+
+[ext_resource type="Script" uid="uid://cgeb7e88cvk32" path="res://entity/entity_data.gd" id="1_qgbjd"]
+
+[resource]
+script = ExtResource("1_qgbjd")
+name = &"forest_spirit"
+display_name = "Forest Spirit"
+type = 1
+metadata/_custom_type_script = "uid://cgeb7e88cvk32"

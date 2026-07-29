@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://duhiealokayjp"]
+
+[ext_resource type="Script" uid="uid://bh8uakd782ft7" path="res://items/bow/bow.gd" id="1_xqpm3"]
+
+[node name="bow" type="Node2D" unique_id=2131441175]
+script = ExtResource("1_xqpm3")
+item_name = &"bow"
+cooldown = 1.5
+usage_cost = Dictionary[int, int]({
+0: 1,
+1: 1
+})
+repair_cost = Dictionary[int, int]({
+0: 10
+})

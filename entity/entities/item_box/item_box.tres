@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://dcyr1ga4oqjm5"]
+
+[ext_resource type="Script" uid="uid://cgeb7e88cvk32" path="res://entity/entity_data.gd" id="1_1b6da"]
+
+[resource]
+script = ExtResource("1_1b6da")
+name = &"item_box"
+display_name = "Item Box"
+metadata/_custom_type_script = "uid://cgeb7e88cvk32"

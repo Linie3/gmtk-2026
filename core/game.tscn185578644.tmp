@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bcxdl7vmhwro4"]
+
+[ext_resource type="Script" uid="uid://c6y2jwkyny2k6" path="res://core/game.gd" id="1_gjr3k"]
+[ext_resource type="Shader" uid="uid://cqshiixd3xjvd" path="res://assets/shaders/world.gdshader" id="2_gjr3k"]
+[ext_resource type="Script" uid="uid://beobasoccyje2" path="res://core/world.gd" id="3_gjr3k"]
+[ext_resource type="Texture2D" uid="uid://b0h5010d8pgg3" path="res://assets/grass.png" id="4_bpu47"]
+[ext_resource type="PackedScene" uid="uid://btgy0rnxvfht4" path="res://entity/entities/time_machine/time_machine.tscn" id="5_gcgb4"]
+[ext_resource type="PackedScene" uid="uid://cr3l7x8g53tq4" path="res://entity/entities/player/player.tscn" id="6_8bifg"]
+[ext_resource type="PackedScene" uid="uid://crndvdes2y8d7" path="res://ui/ui.tscn" id="7_r8boq"]
+[ext_resource type="AudioStream" uid="uid://camtsdwet80sb" path="res://assets/music/Epic - Ship.wav" id="8_fdp5g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mt3p"]
+shader = ExtResource("2_gjr3k")
+shader_parameter/blackout_position = Vector2(0, 0)
+shader_parameter/blackout_enabled = false
+shader_parameter/radius = 200.0
+shader_parameter/softness = 80.0
+shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7jktm"]
+vertices = PackedVector2Array(7203.8203, -6954.258, 7163.1797, 7075.3906, 135, 78.42969, 135, 29.570313, 118.60156, 139.63281, 118.60156, -31.632813, 67.63281, 190.60156, -7603.8203, 7401.5703, -2, 209.25781, -71.63281, 190.60156, -122.60156, 139.63281, -7563.1797, -7484.6563, -139, 78.42969, -139, 29.570313, -122.60156, -31.632813, -71.63281, -82.60156, -2, -101.25781, 67.63281, -82.60156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(0, 3, 5), PackedInt32Array(6, 4, 1), PackedInt32Array(6, 1, 7, 8), PackedInt32Array(9, 8, 7), PackedInt32Array(10, 9, 7), PackedInt32Array(10, 7, 11, 12), PackedInt32Array(13, 12, 11), PackedInt32Array(14, 13, 11), PackedInt32Array(15, 14, 11), PackedInt32Array(15, 11, 0, 16), PackedInt32Array(17, 16, 0), PackedInt32Array(17, 0, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-7627, -7551, -7668, 7467, 7227, 7138, 7268, -7016)])
+parsed_collision_mask = 4294967041
+source_geometry_mode = 1
+agent_radius = 64.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wguj5"]
+shader = ExtResource("2_gjr3k")
+shader_parameter/blackout_position = Vector2(0, 0)
+shader_parameter/blackout_enabled = true
+shader_parameter/radius = 4000.00019
+shader_parameter/softness = 2000.000095
+shader_parameter/global_transform_inv = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[node name="game" type="Node" unique_id=939668133 node_paths=PackedStringArray("world", "player_component", "chill_audio_stream_player", "intense_audio_stream_player")]
+script = ExtResource("1_gjr3k")
+world = NodePath("world")
+player_component = NodePath("world/objects/Player")
+chill_audio_stream_player = NodePath("chill_music")
+intense_audio_stream_player = NodePath("intense_music")
+sound_max_db = -10.0
+
+[node name="world" type="Node2D" parent="." unique_id=1493077604 node_paths=PackedStringArray("navigation_region", "enemies_container", "environment_container", "player_component", "camera", "blackout_rect", "game", "enemy_timer")]
+material = SubResource("ShaderMaterial_1mt3p")
+script = ExtResource("3_gjr3k")
+blackout_max_radius = 3500.0
+blackout_min_radius = 1000.0
+navigation_region = NodePath("NavigationRegion2D")
+enemies_container = NodePath("objects/enemies")
+environment_container = NodePath("objects/environment")
+player_component = NodePath("objects/Player")
+camera = NodePath("Camera2D")
+blackout_rect = NodePath("CanvasLayer/ColorRect")
+game = NodePath("..")
+enemy_timer = NodePath("../Timer")
+
+[node name="Parallax2D" type="Parallax2D" parent="world" unique_id=1811088875]
+repeat_size = Vector2(64, 64)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="world/Parallax2D" unique_id=237657309]
+position = Vector2(64, 64)
+texture = ExtResource("4_bpu47")
+
+[node name="Camera2D" type="Camera2D" parent="world" unique_id=870487946]
+zoom = Vector2(0.5, 0.5)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="world" unique_id=2028339851]
+position = Vector2(2, -54)
+navigation_polygon = SubResource("NavigationPolygon_7jktm")
+
+[node name="objects" type="Node2D" parent="world" unique_id=33569107 groups=["navigation_polygon_source_geometry_group"]]
+y_sort_enabled = true
+
+[node name="time_machine" parent="world/objects" unique_id=1447871889 node_paths=PackedStringArray("player_component") instance=ExtResource("5_gcgb4")]
+player_component = NodePath("../Player")
+
+[node name="Player" parent="world/objects" unique_id=129920706 instance=ExtResource("6_8bifg")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="world/objects/Player" unique_id=851298692]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="enemies" type="Node2D" parent="world/objects" unique_id=245035550]
+y_sort_enabled = true
+
+[node name="environment" type="Node2D" parent="world/objects" unique_id=959803631]
+y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="world" unique_id=783072149]
+
+[node name="ColorRect" type="ColorRect" parent="world/CanvasLayer" unique_id=1012945947]
+material = SubResource("ShaderMaterial_wguj5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ui" parent="." unique_id=2036145706 node_paths=PackedStringArray("game", "player_component") instance=ExtResource("7_r8boq")]
+layer = 2
+game = NodePath("..")
+player_component = NodePath("../world/objects/Player")
+
+[node name="Timer" type="Timer" parent="." unique_id=289750692]
+wait_time = 14.0
+autostart = true
+
+[node name="chill_music" type="AudioStreamPlayer" parent="." unique_id=769637528]
+stream = ExtResource("8_fdp5g")
+
+[node name="intense_music" type="AudioStreamPlayer" parent="." unique_id=1756276055]
+volume_db = -30.0
+autoplay = true

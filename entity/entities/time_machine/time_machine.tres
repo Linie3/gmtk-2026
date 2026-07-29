@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://cdc3i8yd55vrm"]
+
+[ext_resource type="Script" uid="uid://cgeb7e88cvk32" path="res://entity/entity_data.gd" id="1_sfjg0"]
+
+[resource]
+script = ExtResource("1_sfjg0")
+name = &"time_machine"
+display_name = "Time Machine"
+metadata/_custom_type_script = "uid://cgeb7e88cvk32"

@@ -1,0 +1,396 @@
+[gd_scene format=3 uid="uid://dtdeh34kyf0a1"]
+
+[ext_resource type="Script" uid="uid://dnjw5xq3cdttl" path="res://dev_tools.gd" id="1_6rww0"]
+[ext_resource type="Theme" uid="uid://cynwa85mtqjgh" path="res://devtools_section_margin_container.tres" id="2_8bj8e"]
+[ext_resource type="Theme" uid="uid://ebpdlq8sffi3" path="res://spinbar_override.tres" id="3_kxa34"]
+
+[node name="dev_tools" type="CenterContainer" unique_id=925454581 node_paths=PackedStringArray("pause_game_button", "stage_button", "stage_mode", "stage_step", "trigger_showdown", "set_timer_button", "set_timer_mode", "set_timer_minutes", "set_timer_seconds", "sound_type", "sound_toggle", "sound_volume", "sound_volume_text", "invulnerable", "kill", "health", "health_mode", "health_amount", "clear_enemies", "peaceful", "enemy_spawn", "enemy_type", "enemy_amount", "resources_fill", "resources_clear", "resource_mode", "resource_type", "resource_amount", "items_fill", "items_clear", "item_mode", "item_type", "item_slot")]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_right = 30.5
+offset_bottom = 83.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 1
+script = ExtResource("1_6rww0")
+pause_game_button = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/pause")
+stage_button = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/stage_button")
+stage_mode = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/stage_mode")
+stage_step = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/stage_step")
+trigger_showdown = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/showdown")
+set_timer_button = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/set_timer")
+set_timer_mode = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/set_timer_mode")
+set_timer_minutes = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/set_timer_minutes")
+set_timer_seconds = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/set_timer_seconds")
+sound_type = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/sound_type")
+sound_toggle = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/sound_toggle")
+sound_volume = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/sound_volume")
+sound_volume_text = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/sound_volume_text")
+invulnerable = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2/invulnerable")
+kill = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2/kill")
+health = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/health")
+health_mode = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/health_mode")
+health_amount = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/health_amount")
+clear_enemies = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer/clear_enemies")
+peaceful = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer/peaceful")
+enemy_spawn = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2/enemy_spawn")
+enemy_type = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2/enemy_type")
+enemy_amount = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2/enemy_amount")
+resources_fill = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer/resources_fill")
+resources_clear = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer/resources_clear")
+resource_mode = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/resource_mode")
+resource_type = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/resource_type")
+resource_amount = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/resource_amount")
+items_fill = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer/items_fill")
+items_clear = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer/items_clear")
+item_mode = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2/item_mode")
+item_type = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2/item_type")
+item_slot = NodePath("PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2/item_slot")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=197452267]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=930700557]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1845971847]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2" unique_id=396848023]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer" unique_id=1146853600]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Game"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer" unique_id=1020549530]
+layout_mode = 2
+theme = ExtResource("2_8bj8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer" unique_id=1858322522]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=296221144]
+layout_mode = 2
+
+[node name="set_timer" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1467034652]
+layout_mode = 2
+text = "Timer"
+
+[node name="set_timer_mode" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2093924609]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Set"
+popup/item_0/id = 0
+popup/item_1/text = "Add"
+popup/item_1/id = 1
+popup/item_2/text = "Rem"
+popup/item_2/id = 2
+
+[node name="set_timer_minutes" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=992053063]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kxa34")
+suffix = "m"
+
+[node name="set_timer_seconds" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1621263566]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kxa34")
+suffix = "s"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=887098116]
+layout_mode = 2
+
+[node name="stage_button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=487229603]
+layout_mode = 2
+text = "Stage"
+
+[node name="stage_mode" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1035970574]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Advance"
+popup/item_0/id = 0
+popup/item_1/text = "Set"
+popup/item_1/id = 1
+
+[node name="stage_step" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1514080106]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kxa34")
+value = 1.0
+rounded = true
+allow_greater = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1858195201]
+layout_mode = 2
+
+[node name="showdown" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1312554004]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Showdown"
+
+[node name="pause" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=554858609]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Pause"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1755361199]
+layout_mode = 2
+
+[node name="sound_type" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=771810778]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Music"
+popup/item_0/id = 0
+
+[node name="sound_toggle" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=412307997]
+layout_mode = 2
+button_pressed = true
+
+[node name="sound_volume" type="HSlider" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=767459315]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 20.0
+step = 0.1
+
+[node name="sound_volume_text" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1772028165]
+custom_minimum_size = Vector2(47, 0)
+layout_mode = 2
+text = "00.00"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1937162145]
+layout_mode = 2
+text = "dB"
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2" unique_id=986009470]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=1826489497]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Player"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=866828584]
+layout_mode = 2
+theme = ExtResource("2_8bj8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer" unique_id=278850039]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer" unique_id=1651152589]
+layout_mode = 2
+
+[node name="invulnerable" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=555962862]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Invulnerable"
+
+[node name="kill" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=299714573]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kill"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer" unique_id=371864818]
+layout_mode = 2
+
+[node name="health" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1279963368]
+layout_mode = 2
+text = "Health"
+
+[node name="health_mode" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=281660103]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Set"
+popup/item_0/id = 0
+popup/item_1/text = "Give"
+popup/item_1/id = 1
+popup/item_2/text = "Take"
+popup/item_2/id = 2
+
+[node name="health_amount" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" unique_id=492729945]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kxa34")
+value = 1.0
+allow_greater = true
+
+[node name="Label2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=477224015]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Enemies"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3" unique_id=212965962]
+layout_mode = 2
+theme = ExtResource("2_8bj8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2" unique_id=2025753335]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer" unique_id=541682586]
+layout_mode = 2
+
+[node name="clear_enemies" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=265966272]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="peaceful" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1598748111]
+layout_mode = 2
+text = "Peaceful"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer" unique_id=1605347463]
+layout_mode = 2
+
+[node name="enemy_spawn" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=82791541]
+layout_mode = 2
+text = "Spawn"
+
+[node name="enemy_type" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=841372386]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/id = 0
+
+[node name="enemy_amount" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer3/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=971463728]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("3_kxa34")
+min_value = 1.0
+value = 1.0
+rounded = true
+allow_greater = true
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2" unique_id=285168373]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=823244763]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Resources"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=2082524093]
+layout_mode = 2
+theme = ExtResource("2_8bj8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer" unique_id=1980712171]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer" unique_id=476753921]
+layout_mode = 2
+
+[node name="resources_fill" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1614055838]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fill"
+
+[node name="resources_clear" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=770128800]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer" unique_id=92353666]
+layout_mode = 2
+
+[node name="resource_mode" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2130572528]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Give"
+popup/item_0/id = 0
+popup/item_1/text = "Take"
+popup/item_1/id = 1
+popup/item_2/text = "Set"
+popup/item_2/id = 2
+
+[node name="resource_type" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=272530566]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+
+[node name="resource_amount" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=965512455]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("3_kxa34")
+
+[node name="Label2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1754991428]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Items"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1740731904]
+layout_mode = 2
+theme = ExtResource("2_8bj8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2" unique_id=757344600]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer" unique_id=2140792230]
+layout_mode = 2
+
+[node name="items_fill" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1323774688]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fill"
+
+[node name="items_clear" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1971423645]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer" unique_id=1572441936]
+layout_mode = 2
+
+[node name="item_mode" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1551700893]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Give"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+
+[node name="item_type" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=191330124]
+custom_minimum_size = Vector2(80, 0)
+custom_maximum_size = Vector2(-1, 31)
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/id = 0
+
+[node name="item_slot" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer2/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=167127557]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("3_kxa34")
+max_value = 9.0
+rounded = true

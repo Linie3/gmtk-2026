@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://be7vuhiuyomfp"]
+
+[ext_resource type="Texture2D" uid="uid://drdko68qysbsm" path="res://assets/rock.png" id="1_fmw2r"]
+[ext_resource type="PackedScene" uid="uid://bt1acmesi5bbt" path="res://entity/component/harvestable.tscn" id="2_kya2q"]
+[ext_resource type="PackedScene" uid="uid://bljcf7p8p5rn7" path="res://entity/component/game_collision.tscn" id="3_q5x4i"]
+[ext_resource type="PackedScene" uid="uid://crfibr2n56jko" path="res://entity/component/healthbar.tscn" id="4_q1afj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gtey5"]
+radius = 39.0
+height = 114.0
+
+[node name="rock" type="Node2D" unique_id=166922364]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=187635715]
+position = Vector2(0, -6)
+scale = Vector2(2, 2)
+texture = ExtResource("1_fmw2r")
+
+[node name="harvestable" parent="." unique_id=316802169 instance=ExtResource("2_kya2q")]
+harvesting_health = 5
+harvestation_results = Dictionary[int, int]({
+1: 5
+})
+
+[node name="harvestable_area" parent="harvestable" index="0" unique_id=1805849655]
+collision_mask = 2
+monitoring = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="harvestable/harvestable_area" index="0" unique_id=1713123852 groups=["navigation_polygon_source_geometry_group"]]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gtey5")
+
+[node name="game_collision" parent="." unique_id=1007742035 instance=ExtResource("3_q5x4i")]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="game_collision" unique_id=768274165 groups=["navigation_polygon_source_geometry_group"]]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gtey5")
+
+[node name="healthbar" parent="." unique_id=1696183414 node_paths=PackedStringArray("harvestable") instance=ExtResource("4_q1afj")]
+offset_left = -32.28
+offset_top = -101.67
+offset_right = -32.28
+offset_bottom = -101.67
+harvestable = NodePath("../harvestable")
+
+[editable path="harvestable"]
