@@ -182,4 +182,5 @@ theme_override_font_sizes/font_size = 32
 text = "Got it!"
 
 [node name="dev_tools" parent="." unique_id=925454581 node_paths=PackedStringArray("ui") instance=ExtResource("4_nltto")]
+anchors_preset = 5
 ui = NodePath("..")

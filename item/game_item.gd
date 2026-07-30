@@ -6,8 +6,8 @@ const ICON_LOCATION: String = "res://assets/items/icons/"
 var items: Dictionary[StringName, PackedScene]
 
 func _init() -> void:
-	for item_location in Global.get_files_in_directory(ITEMS_PATH, "tscn", "PackedScene"):
-		items[item_location] = load(ITEMS_PATH + item_location)
+	for item_location in Global.load_directory(ITEMS_PATH, "tscn", "PackedScene"):
+		items[item_location] = load(ITEMS_PATH + item_location + "/" + item_location + ".tscn")
 
 func get_item_types() -> Array[StringName]:
 	return items.keys()

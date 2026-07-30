@@ -102,14 +102,16 @@ func _ready() -> void:
 	items_fill.pressed.connect(_on_items_fill_pressed)
 	items_clear.pressed.connect(_on_items_clear_pressed)
 	item_mode.item_selected.connect(_on_item_mode_selected)
-	item_type.item_selected.connect(_on_item_type_selected)
-	item_slot.value_changed.connect(_on_item_slot_changed)
 
 	for resource_type_ in GameResource.get_resource_types():
 		resource_type.add_item(GameResource.get_resource_name(resource_type_).to_pascal_case(), resource_type_)
 		
 	for item_type_ in GameItem.get_item_types():
 		item_type.add_item(item_type_.to_pascal_case())
+		
+	for entity_type_ in GameEntity.get_types():
+		if GameEntity.get_entity_type(entity_type_) == EntityData.EntityType.ENEMY:
+			enemy_type.add_item(entity_type_.to_pascal_case())
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("dev_tools"):
@@ -164,7 +166,9 @@ func _on_peaceful_toggled(_toggled_on: bool) -> void:
 	world.clear_entities(World.EntityType.ENEMY)
 
 func _on_enemy_spawn_pressed() -> void:
-	pass
+	for i in range(enemy_amount.value):
+		var entity : Entity = GameEntity.get_entity(enemy_type.get_item_text(enemy_type.selected).to_snake_case())
+		world._add_object(entity, World.EntityType.ENEMY)
 
 func _on_resources_fill_pressed() -> void:
 	for resource_type in GameResource.get_resource_types():
@@ -197,10 +201,3 @@ func _on_item_mode_selected(_index: int) -> void:
 	match _index:
 		0:
 			player.items.add_item(GameItem.create_item(item_name))
-		
-
-func _on_item_type_selected(_index: int) -> void:
-	pass
-
-func _on_item_slot_changed(_value: float) -> void:
-	pass
